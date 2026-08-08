@@ -31,9 +31,17 @@
 |:---:|:---:|
 | ![Mobile App](images/example-mobile-app.jpg) | ![Brand Identity](images/example-brand-identity.jpg) |
 
-| Product Showcase |
-|:---:|
-| ![Product Showcase](images/example-product-showcase.jpg) |
+| Product Showcase | E-Commerce Product Page |
+|:---:|:---:|
+| ![Product Showcase](images/example-product-showcase.jpg) | ![E-Commerce](images/example-ecommerce.jpg) |
+
+| Event Poster Design | Social Media Campaign |
+|:---:|:---:|
+| ![Poster](images/example-poster.jpg) | ![Social Media](images/example-social-campaign.jpg) |
+
+| AI Agent Interface | Data Visualization |
+|:---:|:---:|
+| ![AI Agent](images/example-ai-agent.jpg) | ![Data Viz](images/example-data-viz.jpg) |
 
 > 🌐 **[View Interactive Showcase →](https://wahyunuriman999.github.io/Designer-Mind/)** — Full HTML page with slider, scroll animations, and Cinematic Concrete Digital design.
 

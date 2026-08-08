@@ -192,13 +192,13 @@
 
         .slider-track {
             display: flex;
-            width: 500%;
+            width: 1000%;
             height: 100%;
             transition: transform var(--duration-cinematic) var(--ease-emphasis);
         }
 
         .slide {
-            width: 20%;
+            width: 10%;
             height: 100%;
             position: relative;
             flex-shrink: 0;
@@ -903,7 +903,7 @@
     <section class="slider-section" id="slider">
         <div class="slider-counter">
             <span class="slider-counter-current" id="slider-current">01</span>
-            <span> / 05</span>
+            <span> / 10</span>
         </div>
 
         <div class="slider-track" id="slider-track">
@@ -947,6 +947,46 @@
                     <div class="slide-label-title">Product Showcase</div>
                 </div>
             </div>
+            <div class="slide">
+                <img src="images/example-ecommerce.jpg" alt="E-Commerce — Luxury Product Page">
+                <div class="slide-overlay"></div>
+                <div class="slide-label">
+                    <div class="slide-label-tag">Example Output</div>
+                    <div class="slide-label-title">E-Commerce Product Page</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/example-poster.jpg" alt="Event Poster — Cinematic Typography">
+                <div class="slide-overlay"></div>
+                <div class="slide-label">
+                    <div class="slide-label-tag">Example Output</div>
+                    <div class="slide-label-title">Event Poster Design</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/example-social-campaign.jpg" alt="Social Media — Campaign Consistency">
+                <div class="slide-overlay"></div>
+                <div class="slide-label">
+                    <div class="slide-label-tag">Example Output</div>
+                    <div class="slide-label-title">Social Media Campaign</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/example-ai-agent.jpg" alt="AI Agent — Beyond Chat Interface">
+                <div class="slide-overlay"></div>
+                <div class="slide-label">
+                    <div class="slide-label-tag">Example Output</div>
+                    <div class="slide-label-title">AI Agent Interface</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/example-data-viz.jpg" alt="Data Visualization — Real-time Analytics">
+                <div class="slide-overlay"></div>
+                <div class="slide-label">
+                    <div class="slide-label-tag">Example Output</div>
+                    <div class="slide-label-title">Data Visualization</div>
+                </div>
+            </div>
         </div>
 
         <div class="slider-controls">
@@ -960,6 +1000,11 @@
                 <button class="slider-dot" data-index="2" aria-label="Slide 3"></button>
                 <button class="slider-dot" data-index="3" aria-label="Slide 4"></button>
                 <button class="slider-dot" data-index="4" aria-label="Slide 5"></button>
+                <button class="slider-dot" data-index="5" aria-label="Slide 6"></button>
+                <button class="slider-dot" data-index="6" aria-label="Slide 7"></button>
+                <button class="slider-dot" data-index="7" aria-label="Slide 8"></button>
+                <button class="slider-dot" data-index="8" aria-label="Slide 9"></button>
+                <button class="slider-dot" data-index="9" aria-label="Slide 10"></button>
             </div>
         </div>
     </section>
@@ -1269,12 +1314,12 @@
         const prevBtn = document.getElementById('slider-prev');
         const nextBtn = document.getElementById('slider-next');
         let currentSlide = 0;
-        const totalSlides = 5;
+        const totalSlides = 10;
         let autoSlideInterval;
 
         function goToSlide(index) {
             currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
-            sliderTrack.style.transform = `translateX(-${currentSlide * 20}%)`;
+            sliderTrack.style.transform = `translateX(-${currentSlide * 10}%)`;
             sliderCurrent.textContent = String(currentSlide + 1).padStart(2, '0');
             sliderDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentSlide);
