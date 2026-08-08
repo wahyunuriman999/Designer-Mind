@@ -25,23 +25,23 @@
 
 | Fintech Landing Page | AI Analytics Dashboard |
 |:---:|:---:|
-| ![Fintech Landing Page](images/example-fintech-landing.jpg) | ![AI Dashboard](images/example-ai-dashboard.jpg) |
+| ![Fintech Landing Page](images/01-fintech-landing.jpg) | ![AI Dashboard](images/02-ai-dashboard.jpg) |
 
 | Mobile App Design | Brand Identity System |
 |:---:|:---:|
-| ![Mobile App](images/example-mobile-app.jpg) | ![Brand Identity](images/example-brand-identity.jpg) |
+| ![Mobile App](images/03-mobile-app.jpg) | ![Brand Identity](images/04-brand-identity.jpg) |
 
 | Product Showcase | E-Commerce Product Page |
 |:---:|:---:|
-| ![Product Showcase](images/example-product-showcase.jpg) | ![E-Commerce](images/example-ecommerce.jpg) |
+| ![Product Showcase](images/05-product-showcase.jpg) | ![E-Commerce](images/06-ecommerce.jpg) |
 
 | Event Poster Design | Social Media Campaign |
 |:---:|:---:|
-| ![Poster](images/example-poster.jpg) | ![Social Media](images/example-social-campaign.jpg) |
+| ![Poster](images/07-poster.jpg) | ![Social Media](images/08-social-campaign.jpg) |
 
 | AI Agent Interface | Data Visualization |
 |:---:|:---:|
-| ![AI Agent](images/example-ai-agent.jpg) | ![Data Viz](images/example-data-viz.jpg) |
+| ![AI Agent](images/09-ai-agent.jpg) | ![Data Viz](images/10-data-viz.jpg) |
 
 > 🌐 **[View Interactive Showcase →](https://wahyunuriman999.github.io/Designer-Mind/)** — Full HTML page with slider, scroll animations, and Cinematic Concrete Digital design.
 
@@ -103,11 +103,11 @@ Designer-Mind/
 ├── SKILL.md              # Complete Designer Mind OS v3.0 skill file
 ├── index.html            # Interactive showcase page (Cinematic Concrete Digital)
 ├── images/               # Example design outputs
-│   ├── example-fintech-landing.jpg
-│   ├── example-ai-dashboard.jpg
-│   ├── example-mobile-app.jpg
-│   ├── example-brand-identity.jpg
-│   └── example-product-showcase.jpg
+│   ├── 01-fintech-landing.jpg
+│   ├── 02-ai-dashboard.jpg
+│   ├── 03-mobile-app.jpg
+│   ├── 04-brand-identity.jpg
+│   └── 05-product-showcase.jpg
 ├── README.md             # This documentation
 └── LICENSE               # Proprietary license
 ```
