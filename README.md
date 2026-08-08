@@ -13,7 +13,7 @@
 
 [![Version](https://img.shields.io/badge/version-3.0.0-cyan?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
 [![License](https://img.shields.io/badge/license-Proprietary-orange?style=for-the-badge&labelColor=0a0a0a)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Antigravity%20%7C%20Claude%20Code-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
+[![Platform](https://img.shields.io/badge/platform-Any%20AI%20Assistant-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
 
 </div>
 
@@ -87,19 +87,12 @@ The result feels: **INTELLIGENT · PREMIUM · TECHNOLOGICAL · CINEMATIC · MEMO
 
 ## 📦 Installation
 
-### For Google Antigravity / Gemini CLI
-
 ```bash
 # Clone this repository
 git clone https://github.com/wahyunuriman999/Designer-Mind.git
-
-# Copy to your skills directory
-cp -r Designer-Mind ~/.gemini/config/skills/designer-mind
 ```
 
-### For Claude Code / Other AI Assistants
-
-Add the contents of `SKILL.md` to your system prompt or custom instructions.
+Then add the contents of `SKILL.md` to your AI assistant's system prompt, custom instructions, or skills directory.
 
 ---
 
