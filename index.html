@@ -855,49 +855,6 @@
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            RESPONSIVE
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .identity-grid { grid-template-columns: 1fr; }
-            .dna-grid { grid-template-columns: repeat(2, 1fr); }
-            .pipeline-grid { grid-template-columns: 1fr 1fr; }
-            .section, .section-wide {
-                padding: var(--space-3xl) var(--space-md);
-            }
-            .slider-section {
-                height: 56vw;
-                min-height: 320px;
-                max-height: 70vh;
-            }
-            .slide img {
-                object-fit: cover;
-                object-position: center center;
-            }
-            .slide-label {
-                left: var(--space-md);
-                bottom: 60px;
-            }
-            .slide-label-title {
-                font-size: 22px;
-            }
-            .slider-counter {
-                right: var(--space-md);
-                top: 70px;
-            }
-            .slider-counter-current {
-                font-size: 20px;
-            }
-            .slider-controls {
-                bottom: 16px;
-            }
-            .slider-dot {
-                width: 24px;
-            }
-            .slider-dot.active {
-                width: 36px;
-            }
-            .cta-button-secondary { margin-left: 0; display: block; margin-top: var(--space-md); text-align: center; }
-        }
-
         @media (max-width: 480px) {
             .dna-grid { grid-template-columns: 1fr 1fr; }
             .pipeline-grid { grid-template-columns: 1fr; }
@@ -956,8 +913,13 @@
             z-index: 100;
         }
 
+        
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+                width: 100%;
+            }
             /* Navbar */
             .nav { padding: 15px; }
             .nav-links { display: none; }
@@ -966,20 +928,74 @@
             
             /* Typography Scaling */
             :root {
-                --space-xl: 60px;
-                --space-2xl: 100px;
+                --space-xl: 40px;
+                --space-2xl: 60px;
             }
-            .hero-title { font-size: 3rem; }
-            .section-title { font-size: 2.5rem; }
-            .section-subtitle { font-size: 1.1rem; }
+            .hero-title { font-size: 2.5rem; text-align: center; }
+            .section-title { font-size: 2rem; text-align: center; }
+            .section-subtitle { font-size: 1rem; text-align: center; padding: 0 10px; }
             
-            /* Slider Section */
-            .slider-content {
-                padding: 20px;
-                padding-top: 100px;
+            /* Center Intro section text */
+            #intro {
+                text-align: center;
+                padding-left: 20px;
+                padding-right: 20px;
             }
-            .slider-category { font-size: 0.7rem; }
-            .slider-title { font-size: 2rem; }
+
+            /* Slider Section */
+            .slider-section {
+                width: 100%;
+                height: 60vh;
+                min-height: 400px;
+            }
+            .slide img {
+                object-fit: cover;
+                object-position: center center;
+            }
+            .slide-label {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 80px;
+                text-align: center;
+                width: 90%;
+            }
+            .slide-label-title {
+                font-size: 24px;
+            }
+            .slide-label-tag {
+                margin-bottom: 5px;
+            }
+            .slider-counter {
+                right: 20px;
+                top: 70px;
+            }
+            .slider-counter-current {
+                font-size: 20px;
+            }
+            
+            /* Make slider controls fit and center */
+            .slider-controls {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+                padding: 0 10px;
+            }
+            .slider-arrows {
+                gap: 8px;
+            }
+            .slider-arrow {
+                width: 36px; height: 36px; font-size: 14px;
+            }
+            .slider-dot {
+                width: 12px;
+                margin: 0 2px;
+            }
+            .slider-dot.active {
+                width: 24px;
+            }
             
             /* Grids */
             .identity-grid, .dna-grid, .pipeline-grid {
@@ -991,8 +1007,8 @@
             .rule-number { margin-right: 0; }
             
             /* Scope Tags */
-            .scope-tags { gap: 10px; }
-            .scope-tag { font-size: 1rem; padding: 0.5rem 1rem; }
+            .scope-tags { gap: 10px; justify-content: center; }
+            .scope-tag { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
             
             /* Promo Video Overrides */
             #promo-video-section {
@@ -1125,8 +1141,13 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             z-index: 100;
         }
 
+        
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+                width: 100%;
+            }
             /* Navbar */
             .nav { padding: 15px; }
             .nav-links { display: none; }
@@ -1135,20 +1156,74 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             
             /* Typography Scaling */
             :root {
-                --space-xl: 60px;
-                --space-2xl: 100px;
+                --space-xl: 40px;
+                --space-2xl: 60px;
             }
-            .hero-title { font-size: 3rem; }
-            .section-title { font-size: 2.5rem; }
-            .section-subtitle { font-size: 1.1rem; }
+            .hero-title { font-size: 2.5rem; text-align: center; }
+            .section-title { font-size: 2rem; text-align: center; }
+            .section-subtitle { font-size: 1rem; text-align: center; padding: 0 10px; }
             
-            /* Slider Section */
-            .slider-content {
-                padding: 20px;
-                padding-top: 100px;
+            /* Center Intro section text */
+            #intro {
+                text-align: center;
+                padding-left: 20px;
+                padding-right: 20px;
             }
-            .slider-category { font-size: 0.7rem; }
-            .slider-title { font-size: 2rem; }
+
+            /* Slider Section */
+            .slider-section {
+                width: 100%;
+                height: 60vh;
+                min-height: 400px;
+            }
+            .slide img {
+                object-fit: cover;
+                object-position: center center;
+            }
+            .slide-label {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 80px;
+                text-align: center;
+                width: 90%;
+            }
+            .slide-label-title {
+                font-size: 24px;
+            }
+            .slide-label-tag {
+                margin-bottom: 5px;
+            }
+            .slider-counter {
+                right: 20px;
+                top: 70px;
+            }
+            .slider-counter-current {
+                font-size: 20px;
+            }
+            
+            /* Make slider controls fit and center */
+            .slider-controls {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+                padding: 0 10px;
+            }
+            .slider-arrows {
+                gap: 8px;
+            }
+            .slider-arrow {
+                width: 36px; height: 36px; font-size: 14px;
+            }
+            .slider-dot {
+                width: 12px;
+                margin: 0 2px;
+            }
+            .slider-dot.active {
+                width: 24px;
+            }
             
             /* Grids */
             .identity-grid, .dna-grid, .pipeline-grid {
@@ -1160,8 +1235,8 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             .rule-number { margin-right: 0; }
             
             /* Scope Tags */
-            .scope-tags { gap: 10px; }
-            .scope-tag { font-size: 1rem; padding: 0.5rem 1rem; }
+            .scope-tags { gap: 10px; justify-content: center; }
+            .scope-tag { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
             
             /* Promo Video Overrides */
             #promo-video-section {
