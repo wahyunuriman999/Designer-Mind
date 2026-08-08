@@ -43,7 +43,7 @@
 |:---:|:---:|
 | ![AI Agent](images/09-ai-agent.jpg) | ![Data Viz](images/10-data-viz.jpg) |
 
-> 🌐 **[View Interactive Showcase →](https://wahyunuriman999.github.io/Designer-Mind/)** — Full HTML page with slider, scroll animations, and Cinematic Concrete Digital design.
+> 🌐 **[View Interactive Showcase →](https://wahyunuriman999.github.io/Designer-Mind-Skill/)** — Full HTML page with slider, scroll animations, and Cinematic Concrete Digital design.
 
 ---
 
