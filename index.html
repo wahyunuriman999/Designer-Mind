@@ -912,33 +912,6 @@
             }
             .roles-track { animation: none; }
         }
-    
-        /* Custom Cursor */
-        @media (pointer: fine) {
-            body { cursor: none; }
-            a, button, .slider-arrow, .slider-dot { cursor: none; }
-            #custom-cursor {
-                position: fixed;
-                top: 0; left: 0;
-                width: 8px; height: 8px;
-                background: #fff;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 99999;
-                transform: translate(-50%, -50%);
-                transition: width 0.2s, height 0.2s, background 0.2s, mix-blend-mode 0.2s;
-                mix-blend-mode: difference;
-            }
-            #custom-cursor.hover {
-                width: 40px; height: 40px;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.5);
-                mix-blend-mode: normal;
-            }
-        }
-        @media (pointer: coarse) {
-            #custom-cursor { display: none; }
-        }
 
         /* Preloader */
         #preloader {
@@ -1057,35 +1030,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
 }
 #promo-video-section #start-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-
-
-        /* Custom Cursor */
-        @media (pointer: fine) {
-            body { cursor: none; }
-            a, button, .slider-arrow, .slider-dot { cursor: none; }
-            #custom-cursor {
-                position: fixed;
-                top: 0; left: 0;
-                width: 8px; height: 8px;
-                background: #fff;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 99999;
-                transform: translate(-50%, -50%);
-                transition: width 0.2s, height 0.2s, background 0.2s, mix-blend-mode 0.2s;
-                mix-blend-mode: difference;
-            }
-            #custom-cursor.hover {
-                width: 40px; height: 40px;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.5);
-                mix-blend-mode: normal;
-            }
-        }
-        @media (pointer: coarse) {
-            #custom-cursor { display: none; }
-        }
-
         /* Preloader */
         #preloader {
             position: fixed;
@@ -1129,9 +1073,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
 </style>
 </head>
 <body>
-
-    <!-- Custom Cursor -->
-    <div id="custom-cursor"></div>
 
     <!-- Preloader -->
     <div id="preloader">
@@ -1893,26 +1834,7 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         }
     
 </script>
-<script>
-
-        // Custom Cursor
-        const cursor = document.getElementById('custom-cursor');
-        if (matchMedia('(pointer: fine)').matches) {
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
-            let cursorX = mouseX;
-            let cursorY = mouseY;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function renderCursor() {
-                cursorX += (mouseX - cursorX) * 0.15; // Smooth lerp
-                cursorY += (mouseY - cursorY) * 0.15;
-                // Use translate3d for hardware acceleration
-                cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+<script>px, ${cursorY}px, 0) translate(-50%, -50%)`;
                 requestAnimationFrame(renderCursor);
             }
             requestAnimationFrame(renderCursor);
