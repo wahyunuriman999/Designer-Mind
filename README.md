@@ -141,7 +141,7 @@ Designer-Mind/
 
 ---
 
-## 🧠 109 Sections Covered
+## 🧠 122 Sections Covered
 
 | Range | Topic |
 |---|---|
@@ -161,6 +161,7 @@ Designer-Mind/
 | §97 | Master Execution Pipeline (24-step process) |
 | §98–104 | Master Commands |
 | §105–109 | Final Quality Gate, Art Director Test, Golden Rules, Ultimate Principle |
+| §110–122 | **Anti-AI / Human Craft Engine** (Pattern Detection, Visual Specificity, Design Tension, Content Realism, Anti-Template, Human Art Direction Test) |
 
 ---
 
