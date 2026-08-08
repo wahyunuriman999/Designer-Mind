@@ -25,7 +25,7 @@
 
 | Fintech Landing Page | AI Analytics Dashboard |
 |:---:|:---:|
-| ![Fintech Landing Page](images/01-fintech-landing.jpg) | ![AI Dashboard](images/02-ai-dashboard.jpg) |
+| ![Fintech Landing Page](images/01-fintech.jpg) | ![AI Dashboard](images/02-ai-dashboard.jpg) |
 
 | Mobile App Design | Brand Identity System |
 |:---:|:---:|
@@ -103,7 +103,7 @@ Designer-Mind/
 ├── SKILL.md              # Complete Designer Mind OS v3.0 skill file
 ├── index.html            # Interactive showcase page (Cinematic Concrete Digital)
 ├── images/               # Example design outputs
-│   ├── 01-fintech-landing.jpg
+│   ├── 01-fintech.jpg
 │   ├── 02-ai-dashboard.jpg
 │   ├── 03-mobile-app.jpg
 │   ├── 04-brand-identity.jpg
