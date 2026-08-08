@@ -912,9 +912,232 @@
             }
             .roles-track { animation: none; }
         }
-    </style>
+    
+        /* Custom Cursor */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            a, button, .slider-arrow, .slider-dot { cursor: none; }
+            #custom-cursor {
+                position: fixed;
+                top: 0; left: 0;
+                width: 8px; height: 8px;
+                background: #fff;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, background 0.2s, mix-blend-mode 0.2s;
+                mix-blend-mode: difference;
+            }
+            #custom-cursor.hover {
+                width: 40px; height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                mix-blend-mode: normal;
+            }
+        }
+        @media (pointer: coarse) {
+            #custom-cursor { display: none; }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--color-bg);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .preloader-logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--color-text);
+            animation: pulse-preloader 1.5s infinite;
+        }
+        @keyframes pulse-preloader {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* Footer */
+        .site-footer {
+            padding: var(--space-xl);
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: var(--color-bg);
+        }
+
+</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+
+/* --- PROMO VIDEO STYLES --- */
+#promo-video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #050505;
+    color: #fff;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+#promo-video-section * { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+/* Film Grain & Vignette for Cinematic Feel */
+#promo-video-section .noise {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+opacity: 0.04; z-index: 1000; pointer-events: none;
+}
+#promo-video-section .vignette {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background: radial-gradient(circle, transparent 50%, #050505 150%);
+z-index: 999; pointer-events: none;
+}
+
+/* Container */
+#promo-video-section #video-container { position: relative; width: 100%; height: 100%; display: none; }
+#promo-video-section .scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+
+/* Typography */
+#promo-video-section h1, #promo-video-section h2, #promo-video-section h3 { text-align: center; }
+#promo-video-section .title-huge { font-size: 6vw; font-weight: 900; letter-spacing: -0.05em; line-height: 1; text-transform: uppercase; }
+#promo-video-section .title-sub { font-size: 2.5vw; font-weight: 300; letter-spacing: 0.2em; color: #f59e0b; margin-top: 1rem; }
+#promo-video-section .text-lead { font-size: 4vw; font-weight: 600; letter-spacing: -0.03em; }
+#promo-video-section .text-highlight { color: #2dd4bf; }
+
+#promo-video-section .scene-label {
+position: absolute; bottom: 8%; left: 8%;
+text-align: left; z-index: 10;
+}
+#promo-video-section .scene-label h2 { font-size: 3vw; font-weight: 800; letter-spacing: -0.02em; text-align: left; }
+#promo-video-section .scene-label p { font-size: 1.5vw; color: #a3a3a3; font-weight: 400; margin-top: 0.5rem; text-align: left; }
+
+#promo-video-section .mono-text { font-family: 'JetBrains Mono', monospace; color: #2dd4bf; font-size: 1.5vw; margin-top: 2rem; }
+
+/* Images & Masking */
+#promo-video-section .img-wrapper {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+will-change: clip-path;
+}
+#promo-video-section .bg-img {
+width: 100%; height: 100%; object-fit: cover;
+filter: brightness(0.6) contrast(1.1);
+transform: scale(1.2);
+will-change: transform;
+}
+
+/* Start UI */
+#promo-video-section #start-ui {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+display: flex; justify-content: center; align-items: center;
+background: #0a0a0a; z-index: 2000;
+}
+#promo-video-section #start-btn {
+padding: 1.5rem 4rem; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2);
+cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 0.1em;
+}
+#promo-video-section #start-btn:hover { background: #fff; color: #000; border-color: #fff; }
+
+
+
+        /* Custom Cursor */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            a, button, .slider-arrow, .slider-dot { cursor: none; }
+            #custom-cursor {
+                position: fixed;
+                top: 0; left: 0;
+                width: 8px; height: 8px;
+                background: #fff;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, background 0.2s, mix-blend-mode 0.2s;
+                mix-blend-mode: difference;
+            }
+            #custom-cursor.hover {
+                width: 40px; height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                mix-blend-mode: normal;
+            }
+        }
+        @media (pointer: coarse) {
+            #custom-cursor { display: none; }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--color-bg);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .preloader-logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--color-text);
+            animation: pulse-preloader 1.5s infinite;
+        }
+        @keyframes pulse-preloader {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* Footer */
+        .site-footer {
+            padding: var(--space-xl);
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: var(--color-bg);
+        }
+
+</style>
 </head>
 <body>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-logo">DM</div>
+    </div>
+
 
     <!-- ━━━━ NAVIGATION ━━━━ -->
     <nav class="nav" id="main-nav">
@@ -1043,6 +1266,11 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
     <!-- ━━━━ INTRO ━━━━ -->
     <section class="intro reveal" id="intro">
         <div class="intro-badge">
@@ -1056,6 +1284,11 @@
             Designer Mind OS is an optimized AI skill with lean core + on-demand references that transforms any coding assistant into an elite design intelligence — thinking as Art Director, UX Designer, Creative Developer, and Visual Strategist simultaneously.
         </p>
     </section>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
 
     <!-- ━━━━ ROLES BAR ━━━━ -->
     <div class="roles-bar">
@@ -1140,6 +1373,11 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
     <!-- ━━━━ PHILOSOPHY ━━━━ -->
     <section class="section reveal" id="philosophy">
         <div class="section-label">Design Philosophy</div>
@@ -1155,6 +1393,11 @@
             <div class="philosophy-source">§5 — Golden Design Principle</div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
 
     <!-- ━━━━ VISUAL DNA ━━━━ -->
     <section class="section-wide reveal" id="visual-dna">
@@ -1213,6 +1456,11 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
     <!-- ━━━━ GOLDEN RULES ━━━━ -->
     <section class="section reveal" id="golden-rules">
         <div class="section-label">§107 — Golden Rules</div>
@@ -1236,6 +1484,11 @@
             <div class="rule-item"><span class="rule-number">15</span><span class="rule-text">When interaction improves the experience — make it interactive.</span></div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
 
     <!-- ━━━━ PIPELINE ━━━━ -->
     <section class="section-wide reveal" id="pipeline">
@@ -1273,6 +1526,11 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
     <!-- ━━━━ SCOPE ━━━━ -->
     <section class="section reveal" id="scope">
         <div class="section-label">Scope — What It Can Design</div>
@@ -1307,14 +1565,19 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
     <!-- ━━━━ CTA ━━━━ -->
     <section class="cta-section reveal">
         <div class="section-label">Get Started</div>
         <h2 class="section-title" style="margin: 0 auto var(--space-lg);">
-            Install the skill.<br>Transform your AI.
+            Ship better design.
         </h2>
         <p class="section-subtitle" style="margin: 0 auto;">
-            Add SKILL.md to your AI assistant's custom instructions and start designing with cinematic precision.
+            Inject the OS into your AI workflow today.
         </p>
         <div>
             <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="cta-button">
@@ -1322,6 +1585,11 @@
             </a>
         </div>
     </section>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
 
     <!-- ━━━━ FOOTER ━━━━ -->
     <footer class="footer">
@@ -1412,5 +1680,243 @@
         });
     </script>
 
+
+<!-- ━━━━ PROMO VIDEO SECTION ━━━━ -->
+<div class="divider" style="margin: 0 auto; margin-bottom: 20px;"></div>
+<div class="section-title" style="text-align: center; margin: 0 auto;">The Framework in Action</div>
+<p class="section-subtitle" style="text-align: center; margin: 0 auto 40px auto;">Watch the OS enforce visual hierarchy across different platforms.</p>
+
+<section id="promo-video-section">
+
+    <div class="noise"></div>
+    <div class="vignette"></div>
+
+    
+
+    <div id="video-container">
+        <!-- Intro -->
+        
+
+        <!-- Title -->
+        <div class="scene" id="scene-title">
+            <h1 class="title-huge">Designer Mind OS</h1>
+            <div class="title-sub">MASTER EDITION V4.0</div>
+        </div>
+
+        <!-- Showcase 1: Fintech -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/01-fintech.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Fintech & Dashboards</h2>
+                <p>High-density data. Premium trust signals.</p>
+            </div>
+        </div>
+
+        <!-- Showcase 2: E-commerce -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/06-ecommerce.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Premium E-Commerce</h2>
+                <p>Product is hero. Sophisticated visual hierarchy.</p>
+            </div>
+        </div>
+
+        <!-- Showcase 3: Mobile Apps -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/03-mobile-app.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Intuitive Mobile UX</h2>
+                <p>Thumb-zone optimization. Meaningful interactions.</p>
+            </div>
+        </div>
+
+        <!-- Showcase 4: Brand Identity -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/04-brand-identity.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Cohesive Brand Systems</h2>
+                <p>Not just logos. Entire visual languages.</p>
+            </div>
+        </div>
+
+        <!-- Showcase 5: AI Interfaces -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/09-ai-agent.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Next-Gen AI Interfaces</h2>
+                <p>Visualizing artificial intelligence clearly.</p>
+            </div>
+        </div>
+
+        <!-- Showcase 6: Data Viz -->
+        <div class="scene showcase">
+            <div class="img-wrapper"><img src="images/10-data-viz.jpg" class="bg-img"></div>
+            <div class="scene-label">
+                <h2>Cinematic Data Visualization</h2>
+                <p>Data that demands to be explored.</p>
+            </div>
+        </div>
+
+        <!-- Elegant Conclusion Sequence -->
+        <div class="scene" id="scene-montage-1">
+            <img src="images/05-product-showcase.jpg" class="bg-img" style="filter:brightness(0.4)">
+            <h1 class="title-huge" style="position:absolute; z-index:10;">ANY PLATFORM.</h1>
+        </div>
+        <div class="scene" id="scene-montage-2">
+            <img src="images/07-poster.jpg" class="bg-img" style="filter:brightness(0.4)">
+            <h1 class="title-huge" style="position:absolute; z-index:10;">ANY MEDIUM.</h1>
+        </div>
+        <div class="scene" id="scene-montage-3">
+            <img src="images/08-social-campaign.jpg" class="bg-img" style="filter:brightness(0.4)">
+            <h1 class="title-huge text-highlight" style="position:absolute; z-index:10;">ZERO COMPROMISE.</h1>
+        </div>
+
+        <!-- Outro -->
+        <div class="scene" id="scene-outro">
+            <h1 class="title-huge" style="font-size: 4vw;">Upgrade Your AI Today.</h1>
+            <p style="font-size: 1.5vw; color: #888; margin-top: 1rem;">Not a template generator. A Design Decision Engine.</p>
+            <div class="mono-text">github.com/wahyunuriman999/Designer-Mind-Skill</div>
+        </div>
+    </div>
+
+    
+</section>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
+
+<script>
+
+        const videoContainer = document.getElementById('video-container');
+        if(videoContainer) videoContainer.style.display = 'block';
+
+        let videoPlayed = false;
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting && !videoPlayed) {
+                    videoPlayed = true;
+                    playCinematicSequence();
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        const sectionToObserve = document.getElementById('promo-video-section');
+        if(sectionToObserve) videoObserver.observe(sectionToObserve);
+        
+        function playCinematicSequence() {
+            const tl = gsap.timeline();
+
+            // 2. MAIN TITLE
+            tl.set('#scene-title', { opacity: 1 })
+              .fromTo('#scene-title .title-huge', 
+                { scale: 0.8, opacity: 0, filter: "blur(20px)" }, 
+                { scale: 1, opacity: 1, filter: "blur(0px)", duration: 2, ease: 'expo.out' })
+              .fromTo('#scene-title .title-sub', 
+                { y: -20, opacity: 0, letterSpacing: "0.5em" }, 
+                { y: 0, opacity: 1, letterSpacing: "0.2em", duration: 1.5, ease: 'power3.out' }, "-=1")
+              .to('#scene-title', { opacity: 0, scale: 1.1, filter: "blur(10px)", duration: 1.5, ease: 'power2.in' }, "+=2");
+
+            // 3. SHOWCASES (Fintech -> Ecomm -> Mobile -> Brand -> AI -> Data)
+            const showcases = document.querySelectorAll('.showcase');
+            
+            // Elegant Variations Array
+            const masks = [
+                { start: 'polygon(0 0, 0 0, 0 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Left to right
+                { start: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Right to left
+                { start: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Bottom to top
+                { start: 'polygon(50% 0, 50% 0, 50% 100%, 50% 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Center split out
+                { start: 'polygon(0 0, 100% 0, 100% 0, 0 0)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Top to bottom
+                { start: 'polygon(0 0, 0 0, 0 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }  // Left to right
+            ];
+
+            const pans = [
+                { scaleStart: 1.0, scaleEnd: 1.05, xStart: 0, xEnd: -30 }, // Zoom In + Pan Left
+                { scaleStart: 1.1, scaleEnd: 1.0, xStart: 0, xEnd: 0 },     // Zoom Out
+                { scaleStart: 1.0, scaleEnd: 1.05, xStart: -30, xEnd: 0 },  // Pan Right
+                { scaleStart: 1.0, scaleEnd: 1.08, xStart: 0, xEnd: 0 },    // Pure Zoom In
+                { scaleStart: 1.1, scaleEnd: 1.0, xStart: -20, xEnd: 0 },   // Zoom Out + Pan Right
+                { scaleStart: 1.0, scaleEnd: 1.05, xStart: 0, xEnd: 30 }    // Pan Left
+            ];
+
+            showcases.forEach((scene, index) => {
+                const imgWrap = scene.querySelector('.img-wrapper');
+                const img = scene.querySelector('.bg-img');
+                const title = scene.querySelector('h2');
+                const p = scene.querySelector('p');
+                
+                const mask = masks[index % masks.length];
+                const pan = pans[index % pans.length];
+
+                tl.set(scene, { opacity: 1 })
+                  // Setup initial camera state
+                  .set(img, { scale: pan.scaleStart, x: pan.xStart })
+                  // Reveal Mask (Varied, slower and smoother ease)
+                  .fromTo(imgWrap, 
+                    { clipPath: mask.start }, 
+                    { clipPath: mask.end, duration: 2.2, ease: 'power2.inOut' })
+                  // Slow Pan/Zoom on image (Varied)
+                  .to(img, { scale: pan.scaleEnd, x: pan.xEnd, duration: 4.5, ease: 'sine.inOut' }, "-=2.2")
+                  // Text Reveal
+                  .fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }, "-=4.0")
+                  .fromTo(p, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }, "-=3.6")
+                  // Fade out scene (Longer, smoother crossfade)
+                  .to(scene, { opacity: 0, duration: 1.5, ease: 'sine.inOut' }, "-=1.0");
+            });
+
+            // 4. ELEGANT CONCLUSION SEQUENCE
+            // Slow crossfades instead of rapid cuts
+            tl.set('#scene-montage-1', { opacity: 1 })
+              .fromTo('#scene-montage-1 .bg-img', { scale: 1.1 }, { scale: 1.05, duration: 3, ease: 'none' })
+              .fromTo('#scene-montage-1 h1', { y: 20, opacity: 0, letterSpacing: "0em" }, { y: 0, opacity: 1, letterSpacing: "-0.05em", duration: 1.5, ease: 'power2.out' }, "-=2.5")
+              
+              // Crossfade to 2
+              .to('#scene-montage-1', { opacity: 0, duration: 1.5, ease: 'power2.inOut' })
+              .set('#scene-montage-2', { opacity: 1 }, "-=1.5")
+              .fromTo('#scene-montage-2 .bg-img', { scale: 1.05 }, { scale: 1, duration: 3, ease: 'none' }, "-=1.5")
+              .fromTo('#scene-montage-2 h1', { y: 20, opacity: 0, letterSpacing: "0em" }, { y: 0, opacity: 1, letterSpacing: "-0.05em", duration: 1.5, ease: 'power2.out' }, "-=1.5")
+
+              // Crossfade to 3
+              .to('#scene-montage-2', { opacity: 0, duration: 1.5, ease: 'power2.inOut' })
+              .set('#scene-montage-3', { opacity: 1 }, "-=1.5")
+              .fromTo('#scene-montage-3 .bg-img', { scale: 1 }, { scale: 1.05, duration: 3, ease: 'none' }, "-=1.5")
+              .fromTo('#scene-montage-3 h1', { y: 20, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.5, ease: 'power2.out' }, "-=1.5")
+              
+              .to('#scene-montage-3', { opacity: 0, duration: 1.5, ease: 'power2.inOut' }, "+=1");
+
+            // 5. OUTRO
+            tl.set('#scene-outro', { opacity: 1 })
+              .fromTo('#scene-outro h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' })
+              .fromTo('#scene-outro p', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' }, "-=1")
+              .fromTo('#scene-outro .mono-text', { opacity: 0, filter: "blur(5px)" }, { opacity: 1, filter: "blur(0px)", duration: 2, ease: 'power2.out' }, "+=0.5");
+        }
+    
+</script>
+<script>
+
+        // Custom Cursor
+        const cursor = document.getElementById('custom-cursor');
+        if (matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            const interactables = document.querySelectorAll('a, button, .slider-arrow, .slider-dot');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('preloader-hidden');
+            }, 800); // Cinematic delay
+        });
+
+</script>
 </body>
 </html>
