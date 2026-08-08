@@ -939,7 +939,8 @@
             opacity: 0;
             visibility: hidden;
         }
-        
+
+
         /* Footer */
         .site-footer {
             padding: var(--space-xl);
@@ -951,6 +952,57 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             background: var(--color-bg);
+            position: relative;
+            z-index: 100;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            /* Navbar */
+            .nav { padding: 15px; }
+            .nav-links { display: none; }
+            .nav-cta { padding: 0.5rem 1rem; font-size: 0.8rem; }
+            .nav-logo-text { display: none; }
+            
+            /* Typography Scaling */
+            :root {
+                --space-xl: 60px;
+                --space-2xl: 100px;
+            }
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .section-subtitle { font-size: 1.1rem; }
+            
+            /* Slider Section */
+            .slider-content {
+                padding: 20px;
+                padding-top: 100px;
+            }
+            .slider-category { font-size: 0.7rem; }
+            .slider-title { font-size: 2rem; }
+            
+            /* Grids */
+            .identity-grid, .dna-grid, .pipeline-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Rules List */
+            .rule-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .rule-number { margin-right: 0; }
+            
+            /* Scope Tags */
+            .scope-tags { gap: 10px; }
+            .scope-tag { font-size: 1rem; padding: 0.5rem 1rem; }
+            
+            /* Promo Video Overrides */
+            #promo-video-section {
+                height: 80vh;
+            }
+            #promo-video-section .title-huge { font-size: 10vw !important; }
+            #promo-video-section .title-sub { font-size: 3vw !important; letter-spacing: 0.1em !important; }
+            #promo-video-section .scene-label { padding: 20px; text-align: center; }
+            #promo-video-section .scene-label h2 { font-size: 1.5rem; }
+            #promo-video-section .scene-label p { font-size: 0.9rem; }
         }
 
 </style>
@@ -1056,7 +1108,8 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             opacity: 0;
             visibility: hidden;
         }
-        
+
+
         /* Footer */
         .site-footer {
             padding: var(--space-xl);
@@ -1068,6 +1121,57 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             letter-spacing: 0.05em;
             text-transform: uppercase;
             background: var(--color-bg);
+            position: relative;
+            z-index: 100;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            /* Navbar */
+            .nav { padding: 15px; }
+            .nav-links { display: none; }
+            .nav-cta { padding: 0.5rem 1rem; font-size: 0.8rem; }
+            .nav-logo-text { display: none; }
+            
+            /* Typography Scaling */
+            :root {
+                --space-xl: 60px;
+                --space-2xl: 100px;
+            }
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .section-subtitle { font-size: 1.1rem; }
+            
+            /* Slider Section */
+            .slider-content {
+                padding: 20px;
+                padding-top: 100px;
+            }
+            .slider-category { font-size: 0.7rem; }
+            .slider-title { font-size: 2rem; }
+            
+            /* Grids */
+            .identity-grid, .dna-grid, .pipeline-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Rules List */
+            .rule-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .rule-number { margin-right: 0; }
+            
+            /* Scope Tags */
+            .scope-tags { gap: 10px; }
+            .scope-tag { font-size: 1rem; padding: 0.5rem 1rem; }
+            
+            /* Promo Video Overrides */
+            #promo-video-section {
+                height: 80vh;
+            }
+            #promo-video-section .title-huge { font-size: 10vw !important; }
+            #promo-video-section .title-sub { font-size: 3vw !important; letter-spacing: 0.1em !important; }
+            #promo-video-section .scene-label { padding: 20px; text-align: center; }
+            #promo-video-section .scene-label h2 { font-size: 1.5rem; }
+            #promo-video-section .scene-label p { font-size: 0.9rem; }
         }
 
 </style>
@@ -1207,10 +1311,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
     <!-- ━━━━ INTRO ━━━━ -->
     <section class="intro reveal" id="intro">
@@ -1225,10 +1325,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             Designer Mind OS is an optimized AI skill with lean core + on-demand references that transforms any coding assistant into an elite design intelligence — thinking as Art Director, UX Designer, Creative Developer, and Visual Strategist simultaneously.
         </p>
     </section>
-
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
 
 
     <!-- ━━━━ ROLES BAR ━━━━ -->
@@ -1314,10 +1410,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
     <!-- ━━━━ PHILOSOPHY ━━━━ -->
     <section class="section reveal" id="philosophy">
@@ -1334,10 +1426,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             <div class="philosophy-source">§5 — Golden Design Principle</div>
         </div>
     </section>
-
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
 
 
     <!-- ━━━━ VISUAL DNA ━━━━ -->
@@ -1397,10 +1485,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
     <!-- ━━━━ GOLDEN RULES ━━━━ -->
     <section class="section reveal" id="golden-rules">
@@ -1425,10 +1509,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             <div class="rule-item"><span class="rule-number">15</span><span class="rule-text">When interaction improves the experience — make it interactive.</span></div>
         </div>
     </section>
-
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
 
 
     <!-- ━━━━ PIPELINE ━━━━ -->
@@ -1467,10 +1547,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
     <!-- ━━━━ SCOPE ━━━━ -->
     <section class="section reveal" id="scope">
@@ -1506,10 +1582,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
     <!-- ━━━━ CTA ━━━━ -->
     <section class="cta-section reveal">
@@ -1526,10 +1598,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             </a>
         </div>
     </section>
-
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
 
 
     <!-- ━━━━ FOOTER ━━━━ -->
@@ -1723,10 +1791,6 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
     
 </section>
 
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 
 <script>
 
@@ -1844,5 +1908,10 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         });
 
 </script>
+
+    <footer class="site-footer">
+        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
+    </footer>
+
 </body>
 </html>
