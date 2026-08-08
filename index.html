@@ -1806,7 +1806,7 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         if(sectionToObserve) videoObserver.observe(sectionToObserve);
         
         function playCinematicSequence() {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
 
             // 2. MAIN TITLE
             tl.set('#scene-title', { opacity: 1 })
