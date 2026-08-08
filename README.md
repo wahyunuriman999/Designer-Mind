@@ -1,10 +1,3 @@
-# ==========================================
-# AEGIS COGNITIVE RUNTIME PLATFORM
-# PROPRIETARY AND CONFIDENTIAL
-# Copyright (c) 2024-2026 Wahyu Nur Iman. 
-# All rights reserved.
-# ==========================================
-
 # DESIGNER MIND OS — Master Edition v3.0
 
 <div align="center">
@@ -23,6 +16,26 @@
 [![Platform](https://img.shields.io/badge/platform-Antigravity%20%7C%20Claude%20Code-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
 
 </div>
+
+---
+
+## 🎨 Example Outputs
+
+> Designs generated using the Designer Mind OS skill — Cinematic Concrete Digital visual DNA.
+
+| Fintech Landing Page | AI Analytics Dashboard |
+|:---:|:---:|
+| ![Fintech Landing Page](images/example-fintech-landing.jpg) | ![AI Dashboard](images/example-ai-dashboard.jpg) |
+
+| Mobile App Design | Brand Identity System |
+|:---:|:---:|
+| ![Mobile App](images/example-mobile-app.jpg) | ![Brand Identity](images/example-brand-identity.jpg) |
+
+| Product Showcase |
+|:---:|
+| ![Product Showcase](images/example-product-showcase.jpg) |
+
+> 🌐 **[View Interactive Showcase →](https://wahyunuriman999.github.io/Designer-Mind/)** — Full HTML page with slider, scroll animations, and Cinematic Concrete Digital design.
 
 ---
 
@@ -68,8 +81,6 @@ The result feels: **INTELLIGENT · PREMIUM · TECHNOLOGICAL · CINEMATIC · MEMO
 
 ### For Google Antigravity / Gemini CLI
 
-Copy the `SKILL.md` file to your skills directory:
-
 ```bash
 # Clone this repository
 git clone https://github.com/wahyunuriman999/Designer-Mind.git
@@ -88,9 +99,16 @@ Add the contents of `SKILL.md` to your system prompt or custom instructions.
 
 ```
 Designer-Mind/
-├── SKILL.md          # The complete Designer Mind OS v3.0 skill file
-├── README.md         # This documentation
-└── LICENSE           # Proprietary license
+├── SKILL.md              # Complete Designer Mind OS v3.0 skill file
+├── index.html            # Interactive showcase page (Cinematic Concrete Digital)
+├── images/               # Example design outputs
+│   ├── example-fintech-landing.jpg
+│   ├── example-ai-dashboard.jpg
+│   ├── example-mobile-app.jpg
+│   ├── example-brand-identity.jpg
+│   └── example-product-showcase.jpg
+├── README.md             # This documentation
+└── LICENSE               # Proprietary license
 ```
 
 ---
@@ -124,24 +142,24 @@ Designer-Mind/
 
 ## 🧠 109 Sections Covered
 
-The full `SKILL.md` contains 109 comprehensive sections including:
-
-- **§0–2** — Core Identity, Personality, Communication
-- **§3–5** — Scope, Philosophy, Golden Principle
-- **§6–13** — House Style, Visual DNA, Color, Lighting, Materials, Typography, Space, Grid
-- **§14–20** — Hero Rule, Hierarchy, Premium Rule, Adaptation, References, Originality, Anti-Decoration
-- **§21–38** — Interaction Engine (18 sections on interaction design)
-- **§39–40** — Performance & Accessibility
-- **§41–48** — Design Modes (Web, Mobile, Dashboard, E-Commerce, Showcase, Brand, Graphic)
-- **§49–55** — Image Art Direction & Campaign Consistency
-- **§56–62** — Design Systems & Creative Development
-- **§63–68** — Code Output, Reality Check, Technical Feasibility, Design Intelligence
-- **§69–76** — Workflow, Iteration, Translation (Keren/Simple/Modern), Revision
-- **§77–84** — Quality Assurance (Self-Critique, Visual QA, UX QA, Interaction QA, etc.)
-- **§85–96** — Advanced Design Principles
-- **§97** — Master Execution Pipeline (24-step process)
-- **§98–104** — Master Commands
-- **§105–109** — Final Quality Gate, Art Director Test, Golden Rules, Ultimate Principle
+| Range | Topic |
+|---|---|
+| §0–2 | Core Identity, Personality, Communication |
+| §3–5 | Scope, Philosophy, Golden Principle |
+| §6–13 | House Style, Visual DNA, Color, Lighting, Materials, Typography, Space, Grid |
+| §14–20 | Hero Rule, Hierarchy, Premium, Adaptation, References, Originality, Anti-Decoration |
+| §21–38 | Interaction Engine (18 sections) |
+| §39–40 | Performance & Accessibility |
+| §41–48 | Design Modes (Web, Mobile, Dashboard, E-Commerce, Showcase, Brand, Graphic) |
+| §49–55 | Image Art Direction & Campaign Consistency |
+| §56–62 | Design Systems & Creative Development |
+| §63–68 | Code Output, Reality Check, Technical Feasibility, Design Intelligence |
+| §69–76 | Workflow, Iteration, Translation (Keren/Simple/Modern), Revision |
+| §77–84 | Quality Assurance (Self-Critique, Visual QA, UX QA, Interaction QA) |
+| §85–96 | Advanced Design Principles |
+| §97 | Master Execution Pipeline (24-step process) |
+| §98–104 | Master Commands |
+| §105–109 | Final Quality Gate, Art Director Test, Golden Rules, Ultimate Principle |
 
 ---
 
@@ -155,7 +173,7 @@ Target audience: senior developers and engineering leads.
 
 ### Design an AI Dashboard
 ```
-Design a real-time AI monitoring dashboard 
+Design a real-time AI monitoring dashboard
 with live metrics and interactive data visualizations.
 ```
 
@@ -166,7 +184,7 @@ Create a cinematic hero image prompt for a cybersecurity product landing page.
 
 ### Build a Design System
 ```
-Build a complete design system with tokens, components, 
+Build a complete design system with tokens, components,
 and interaction patterns for a fintech SaaS product.
 ```
 
@@ -175,7 +193,7 @@ and interaction patterns for a fintech SaaS product.
 ## 📜 License
 
 **Proprietary and Confidential**
-Copyright (c) 2024-2026 Wahyu Nur Iman. All rights reserved.
+Copyright © 2024–2026 Wahyu Nur Iman. All rights reserved.
 
 ---
 
