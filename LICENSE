@@ -1,26 +1,26 @@
-PROPRIETARY SOFTWARE LICENSE
+Designer Mind OS — Source Available License
 
 Copyright (c) 2024-2026 Wahyu Nur Iman. All rights reserved.
 
-NOTICE: This software and its associated documentation files (the "Software")
-are the proprietary and confidential property of Wahyu Nur Iman.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use
+the Software for personal, non-commercial purposes, including the right to
+use, copy, and modify the Software for personal use.
 
-RESTRICTIONS:
-1. You may NOT copy, modify, merge, publish, distribute, sublicense,
-   or sell copies of the Software without explicit written permission
-   from the copyright holder.
+The following restrictions apply:
 
-2. You may NOT reverse engineer, decompile, or disassemble the Software.
+1. REDISTRIBUTION: You may not redistribute, sublicense, sell, or otherwise
+   transfer copies of the Software or substantial portions of the Software
+   without prior written permission from the copyright holder.
 
-3. You may NOT use the Software for commercial purposes without a
-   separate commercial license agreement.
+2. COMMERCIAL USE: You may not use the Software for commercial purposes
+   without prior written permission from the copyright holder.
 
-4. You may NOT remove or alter any proprietary notices, labels, or marks
-   on the Software.
+3. ATTRIBUTION: Any permitted use must retain the above copyright notice
+   and this permission notice.
 
-PERMITTED USE:
-- Personal, non-commercial use for educational purposes only.
-- Integration into your own AI assistant configuration for personal use.
+4. DERIVATIVE WORKS: You may create derivative works for personal use only.
+   Public distribution of derivative works requires prior written permission.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -29,6 +29,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-For licensing inquiries, contact: Wahyu Nur Iman
-GitHub: https://github.com/wahyunuriman999

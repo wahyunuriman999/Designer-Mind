@@ -1,18 +1,18 @@
-# DESIGNER MIND OS — Master Edition v3.0
+# DESIGNER MIND OS — Master Edition v4.0
 
 <div align="center">
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   D E S I G N E R   M I N D   O S
-  MASTER EDITION v3.0
+  MASTER EDITION v4.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**Elite Art Director · UI/UX Designer · Creative Developer · Interactive Experience Designer · AI Visual Strategist**
+**Elite Art Director · UI/UX Designer · Creative Developer · Interactive Experience Designer**
 
-[![Version](https://img.shields.io/badge/version-3.0.0-cyan?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind-Skill)
-[![License](https://img.shields.io/badge/license-Proprietary-orange?style=for-the-badge&labelColor=0a0a0a)](LICENSE)
+[![Version](https://img.shields.io/badge/version-4.0.0-cyan?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind-Skill)
+[![License](https://img.shields.io/badge/license-Source%20Available-orange?style=for-the-badge&labelColor=0a0a0a)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Any%20AI%20Assistant-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind-Skill)
 
 </div>
@@ -72,7 +72,7 @@ It is **not** a generic design generator. It is a **design decision engine** tha
 
 ## 🔥 Signature Visual DNA
 
-**Cinematic Concrete Digital** — the recognizable design language:
+**Cinematic Concrete Digital** — the recognizable design language (default, not mandatory):
 
 - 🌑 Deep black environments with graphite surfaces
 - 🔶 Copper-orange highlights with teal/cyan luminous accents
@@ -80,6 +80,8 @@ It is **not** a generic design generator. It is a **design decision engine** tha
 - 🎬 Cinematic lighting with controlled shadows
 - ✨ Atmospheric depth with layered compositions
 - 🎯 Intentional negative space with premium perception
+
+> **v4.0 Change:** Dark foundation is now a strong default, not a mandate. Healthcare, education, accessibility-critical, and brand-specific contexts automatically adapt to appropriate foundations.
 
 The result feels: **INTELLIGENT · PREMIUM · TECHNOLOGICAL · CINEMATIC · MEMORABLE**
 
@@ -99,18 +101,26 @@ Then add the contents of `SKILL.md` to your AI assistant's system prompt, custom
 ## 🏗️ Project Structure
 
 ```
-Designer-Mind/
-├── SKILL.md              # Complete Designer Mind OS v3.0 skill file
-├── index.html            # Interactive showcase page (Cinematic Concrete Digital)
-├── images/               # Example design outputs
-│   ├── 01-fintech.jpg
-│   ├── 02-ai-dashboard.jpg
-│   ├── 03-mobile-app.jpg
-│   ├── 04-brand-identity.jpg
-│   └── 05-product-showcase.jpg
-├── README.md             # This documentation
-└── LICENSE               # Proprietary license
+Designer-Mind-Skill/
+├── SKILL.md                                # Core skill (~180 lines, ~2K tokens)
+├── references/
+│   ├── design-tokens.md                    # Concrete values: colors, spacing, typography, motion, WCAG
+│   ├── design-modes.md                     # Mode-specific guidance: web, mobile, dashboard, brand, AI
+│   └── anti-generic-checklist.md           # Anti-AI pattern detection & human craft verification
+├── index.html                              # Interactive showcase page
+├── images/                                 # 10 example design outputs
+├── README.md                               # This documentation
+└── LICENSE                                 # Source Available license
 ```
+
+### v4.0 Architecture
+
+| Layer | File | Loaded | Purpose |
+|---|---|---|---|
+| **Core** | `SKILL.md` | Always | Philosophy, visual DNA, interaction engine, workflow |
+| **Reference** | `references/design-tokens.md` | On demand | Concrete CSS values, WCAG minimums, scales |
+| **Reference** | `references/design-modes.md` | On demand | Mode-specific design guidance |
+| **Reference** | `references/anti-generic-checklist.md` | On demand | Anti-AI pattern detection & final tests |
 
 ---
 
@@ -121,47 +131,19 @@ Designer-Mind/
 > **THE BEST DESIGN IS NOT THE DESIGN WITH THE MOST EFFECTS.**
 > **THE BEST DESIGN IS THE DESIGN WHERE EVERY ELEMENT HAS A REASON.**
 
-### 15 Golden Rules
+### 11 Core Rules
 
 1. Design with intention
 2. Hierarchy before decoration
 3. Typography before effects
 4. Functional interaction before decorative interaction
-5. Premium means better decisions
-6. Empty space is allowed
-7. Do not copy references
-8. Do not create generic AI design
-9. Do not fake technical functionality
-10. Do not sacrifice UX for visual effects
-11. Do not sacrifice performance for animation
-12. Do not sacrifice accessibility for aesthetics
-13. Preserve approved design decisions
-14. Adapt the style to the context, but never lose the design DNA
-15. When interaction makes the experience more useful: **make it interactive**
-
----
-
-## 🧠 122 Sections Covered
-
-| Range | Topic |
-|---|---|
-| §0–2 | Core Identity, Personality, Communication |
-| §3–5 | Scope, Philosophy, Golden Principle |
-| §6–13 | House Style, Visual DNA, Color, Lighting, Materials, Typography, Space, Grid |
-| §14–20 | Hero Rule, Hierarchy, Premium, Adaptation, References, Originality, Anti-Decoration |
-| §21–38 | Interaction Engine (18 sections) |
-| §39–40 | Performance & Accessibility |
-| §41–48 | Design Modes (Web, Mobile, Dashboard, E-Commerce, Showcase, Brand, Graphic) |
-| §49–55 | Image Art Direction & Campaign Consistency |
-| §56–62 | Design Systems & Creative Development |
-| §63–68 | Code Output, Reality Check, Technical Feasibility, Design Intelligence |
-| §69–76 | Workflow, Iteration, Translation (Keren/Simple/Modern), Revision |
-| §77–84 | Quality Assurance (Self-Critique, Visual QA, UX QA, Interaction QA) |
-| §85–96 | Advanced Design Principles |
-| §97 | Master Execution Pipeline (24-step process) |
-| §98–104 | Master Commands |
-| §105–109 | Final Quality Gate, Art Director Test, Golden Rules, Ultimate Principle |
-| §110–122 | **Anti-AI / Human Craft Engine** (Pattern Detection, Visual Specificity, Design Tension, Content Realism, Anti-Template, Human Art Direction Test) |
+5. Premium = better decisions, not more effects
+6. Empty space is allowed and valuable
+7. Do not copy references — extract principles
+8. Do not fake technical functionality
+9. Do not sacrifice UX for visual effects
+10. Do not sacrifice accessibility for aesthetics
+11. Adapt style to context without losing design DNA
 
 ---
 
@@ -192,10 +174,28 @@ and interaction patterns for a fintech SaaS product.
 
 ---
 
+## 📋 Changelog
+
+### v4.0 (2025-08-09)
+- **Restructured:** SKILL.md compressed from 1147 lines (~10K tokens) to ~180 lines (~2K tokens)
+- **Added:** `references/` directory with 3 on-demand reference files
+- **Fixed:** Dark foundation contradiction — now a preference, not a mandate
+- **Added:** Concrete design tokens (WCAG ratios, motion durations, spacing scale)
+- **Removed:** 10+ redundant sections consolidated into single checklist
+- **Fixed:** License updated from "Proprietary" to "Source Available"
+
+### v3.0 (2025-08-08)
+- Added Anti-AI / Human Craft Engine (§110–§122)
+- Platform-agnostic instructions
+- 10 example output images
+
+---
+
 ## 📜 License
 
-**Proprietary and Confidential**
-Copyright © 2024–2026 Wahyu Nur Iman. All rights reserved.
+**Source Available** — Copyright © 2024–2026 Wahyu Nur Iman.
+Free for personal use. Commercial use and redistribution require written permission.
+See [LICENSE](LICENSE) for details.
 
 ---
 
@@ -210,7 +210,7 @@ Copyright © 2024–2026 Wahyu Nur Iman. All rights reserved.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  DESIGNER MIND OS — MASTER EDITION v3.0
+  DESIGNER MIND OS — MASTER EDITION v4.0
   "WHAT IS THE BEST EXPERIENCE I CAN CREATE
    WITH THE INFORMATION, TECHNOLOGY,
    AND CONSTRAINTS AVAILABLE?"
