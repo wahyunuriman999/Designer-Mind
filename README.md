@@ -11,9 +11,9 @@
 
 **Elite Art Director · UI/UX Designer · Creative Developer · Interactive Experience Designer · AI Visual Strategist**
 
-[![Version](https://img.shields.io/badge/version-3.0.0-cyan?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
+[![Version](https://img.shields.io/badge/version-3.0.0-cyan?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind-Skill)
 [![License](https://img.shields.io/badge/license-Proprietary-orange?style=for-the-badge&labelColor=0a0a0a)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Any%20AI%20Assistant-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind)
+[![Platform](https://img.shields.io/badge/platform-Any%20AI%20Assistant-white?style=for-the-badge&labelColor=0a0a0a)](https://github.com/wahyunuriman999/Designer-Mind-Skill)
 
 </div>
 
@@ -89,7 +89,7 @@ The result feels: **INTELLIGENT · PREMIUM · TECHNOLOGICAL · CINEMATIC · MEMO
 
 ```bash
 # Clone this repository
-git clone https://github.com/wahyunuriman999/Designer-Mind.git
+git clone https://github.com/wahyunuriman999/Designer-Mind-Skill.git
 ```
 
 Then add the contents of `SKILL.md` to your AI assistant's system prompt, custom instructions, or skills directory.
