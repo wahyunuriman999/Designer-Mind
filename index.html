@@ -96,7 +96,7 @@
         
         /* Interactive About & Rules */
         .interactive-text-section {
-            padding: 20vh 5vw; display: flex; flex-direction: column; gap: 20vh;
+            padding: 10vh 5vw; display: flex; flex-direction: column; gap: 15vh;
         }
         .reveal-text {
             font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; color: var(--text-3);
@@ -128,7 +128,7 @@
         }
         .promo-text { position: relative; z-index: 2; text-align: center; }
         
-        .footer { padding: 20vh 5vw 10vh; text-align: center; }
+        .footer { padding: 10vh 5vw 10vh; text-align: center; }
     </style>
 </head>
 <body>
@@ -253,7 +253,7 @@
     <section class="interactive-text-section">
         
         <!-- Identity Scroll Reveal -->
-        <div style="min-height: 100vh; display:flex; align-items:center;">
+        <div style="padding: 5vh 0; display:flex; align-items:center;">
             <p class="reveal-text" id="identity-text">
                 We are not a generator. We are a <span class="reveal-word">design decision engine</span>. 
                 Designer Mind determines <span class="reveal-word">WHAT</span> should exist, 
@@ -263,7 +263,7 @@
         </div>
 
         <!-- Rules Stagger Reveal -->
-        <div style="min-height: 100vh;">
+        <div style="padding: 10vh 0;">
             <div class="text-sub" style="margin-bottom: 24px;">The 10 Golden Rules</div>
             <h2 class="text-huge" style="margin-bottom: 80px;">ZERO<br>EXCEPTIONS.</h2>
             
@@ -338,7 +338,7 @@
             scrollTrigger: {
                 trigger: "#showcase",
                 start: "top top",
-                end: "+=900%", // 9 slides length
+                end: "+=800%", // 8 transitions for 9 slides
                 scrub: 1,
                 pin: true
             }
