@@ -250,20 +250,30 @@
             }
         });
 
+        // Ensure proper stacking contexts by setting z-index on slides
+        slides.forEach((slide, i) => {
+            slide.style.zIndex = i;
+        });
+
         // Loop through slides 1 to 3 to transition FROM previous TO next
         slides.forEach((slide, i) => {
             if(i === 0) return; // Skip first slide as it's already visible
             
             const prevSlide = slides[i-1];
+            const prevContent = prevSlide.querySelector('.showcase-content');
+            
             const mask = slide.querySelector('.showcase-mask');
             const img = slide.querySelector('img');
             const title = slide.querySelector('.slide-title');
             const sub = slide.querySelector('.slide-sub');
 
             showcaseTl
+                // Fade out previous slide content
+                .to(prevContent, { y: -50, opacity: 0, duration: 0.8, ease: 'power2.in' })
+                
                 // Reveal the next slide by pulling up its mask
-                .set(slide, { opacity: 1 })
-                .to(mask, { scaleY: 0, duration: 1, ease: 'power2.inOut' })
+                .set(slide, { opacity: 1 }, '-=0.4')
+                .to(mask, { scaleY: 0, duration: 1, ease: 'power2.inOut' }, '-=0.4')
                 
                 // Animate elements inside the new slide
                 .fromTo(img, { scale: 1.2 }, { scale: 1, duration: 1.5, ease: 'power1.out' }, '-=1')
