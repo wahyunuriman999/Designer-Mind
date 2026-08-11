@@ -1084,29 +1084,32 @@ will-change: transform;
     </nav>
 
     <!-- ====== HERO — Sticky Center Stage ====== -->
-    <section id="hero">
-        <div class="hero-sticky">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-orb" id="hero-orb"></div>
+    <section id="hero" style="position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="hero-bg" style="position: absolute; inset: 0; z-index: 1;">
+            <img src="images/01-fintech.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) contrast(1.1);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, #0a0a0a 0%, transparent 50%, #0a0a0a 100%);"></div>
+        </div>
+        
+        <canvas id="hero-canvas" style="position: absolute; inset: 0; z-index: 2; opacity: 0.5;"></canvas>
 
-            <div class="hero-content">
-                <div class="hero-eyebrow">Master Edition v5.0</div>
-                <h1 class="hero-title">
-                    <span class="word">DESIGNER</span>
-                    <span class="word title-gradient">MIND</span><br>
-                    <span class="word">OS</span>
-                </h1>
-                <p class="hero-sub">An elite AI design intelligence that thinks as art director, creative developer, and experience designer — simultaneously.</p>
-                <div class="hero-ctas">
-                    <a href="#identity" class="btn-primary">Explore the System</a>
-                    <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="btn-secondary">View on GitHub</a>
-                </div>
+        <div class="hero-content" style="position: relative; z-index: 3; max-width: 900px; padding: 0 24px;">
+            <h1 class="hero-title" style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: #ffffff; margin-bottom: 24px; text-transform: uppercase;">
+                Designer Mind OS
+            </h1>
+            <div class="hero-sub" style="font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 300; letter-spacing: 0.2em; color: var(--copper); margin-bottom: 40px; text-transform: uppercase;">
+                MASTER EDITION V5.0
             </div>
-
-            <div class="hero-scroll-indicator" id="hero-scroll-indicator">
-                <div class="scroll-line"></div>
-                <span class="scroll-text">scroll</span>
+            <p style="font-size: 1.1rem; color: var(--text-2); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                An elite AI design intelligence that thinks as art director, creative developer, and experience designer — simultaneously.
+            </p>
+            <div class="hero-ctas" style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#identity" class="btn-primary">Explore the System</a>
+                <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="btn-secondary">View on GitHub</a>
             </div>
+        </div>
+        
+        <div id="hero-scroll-indicator" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; color: var(--text-3); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; animation: pulse 2s infinite;">
+            Scroll to Explore
         </div>
     </section>
 
@@ -1648,12 +1651,14 @@ will-change: transform;
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     // PATTERN 9: KINETIC TYPOGRAPHY — HERO
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    const heroTl = gsap.timeline({ delay: 0.2 });
     heroTl
-        .to('.char', { y: 0, stagger: 0.04, duration: 1.0 })
-        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
-        .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-        .to('#hero-scroll-indicator', { opacity: 1, duration: 0.6 }, '-=0.3');
+        .from('.hero-bg img', { scale: 1.1, opacity: 0, duration: 2, ease: 'power3.out' })
+        .from('.hero-title', { y: 40, opacity: 0, duration: 1.2, ease: 'power3.out' }, '-=1.5')
+        .from('.hero-sub', { y: 20, opacity: 0, duration: 1.0, ease: 'power3.out' }, '-=0.8')
+        .from('.hero-content p', { y: 20, opacity: 0, duration: 1.0, ease: 'power3.out' }, '-=0.8')
+        .from('.hero-ctas', { opacity: 0, duration: 1.0, ease: 'power3.out' }, '-=0.5')
+        .from('#hero-scroll-indicator', { opacity: 0, duration: 0.8 }, '-=0.5');
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     // PATTERN 1+2: STICKY HERO + DYNAMIC ENV
