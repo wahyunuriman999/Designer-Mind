@@ -206,6 +206,45 @@ Could it be mistaken for a Bootstrap/Tailwind template? REDESIGN.
 Are there too many cards? REMOVE THEM.
 Are there unnecessary gradients, badges, icons? REMOVE THEM.
 
+==================================================
+12. OUTPUT CONSISTENCY STANDARD — MINIMUM BAR
+==================================================
+Every website output MUST meet ALL of the following. These are non-negotiable minimums, not style suggestions.
+
+HERO SECTION:
+- MUST be full-bleed (100vw × 100vh). No static centered containers.
+- MUST have a dominant visual subject (full-bleed image, video, or 3D object) behind the text.
+- MUST use oversized display typography (minimum 6vw).
+- MUST NOT be: headline + subtext + button + stock image stacked.
+
+PRODUCT/OUTPUT GALLERY:
+- MUST use scroll-driven animation (GSAP ScrollTrigger, pinned section, or equivalent).
+- Products MUST appear full-bleed, one at a time, controlled by scroll.
+- MUST NOT be: a static grid, a card gallery, a 3-column layout.
+
+TYPOGRAPHY:
+- Section titles: minimum clamp(3rem, 7vw, 6rem). All caps for impact sections.
+- Body copy: maximum 1.25rem. Never more than 600px wide.
+- No text gradients (background-clip: text). Use solid white/copper only.
+- Font: Inter, Syne, Space Grotesk, or equivalent. Never default system fonts.
+
+COLOR:
+- Background: #050505 or #0a0a0a. Never pure #000000 or pure #ffffff unless intentional.
+- Text: #ffffff primary, #a3a3a3 secondary, #525252 tertiary.
+- Accent: copper (#e07a3a) or teal (#2dd4bf). Use one consistently. Never both fighting equally.
+- BANNED: purple/blue generic AI gradients, neon green, random glassmorphism.
+
+MOTION:
+- MUST use GSAP or equivalent animation library. Native CSS transitions only for micro-interactions.
+- Entrance animations: opacity + transform (y or scale). Easing: power3.out minimum.
+- Scroll reveal: stagger 0.1–0.2s. No instant pop-ins.
+- Product showcase: scrub: 1 minimum for cinematic feel.
+
+NAVIGATION:
+- Minimal. Max 5 items. No mega-menus. No icons in nav.
+- Recommended: fixed position, mix-blend-mode: difference, or ultra-minimal dark bar.
+
+If any of these standards are violated in the output — FIX before delivering.
 
 ---
 
