@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+import re
+
+with open("index.html", "r", encoding="utf-8") as f:
+    content = f.read()
+
+# I will construct a completely new index.html to guarantee we purge all generic SaaS patterns.
+new_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -150,7 +156,7 @@
         <div class="showcase-sticky">
             
             <div class="showcase-slide slide-1">
-                <img src="images/02-ai-dashboard.jpg">
+                <img src="images/02-analytics.jpg">
                 <div class="showcase-content">
                     <div class="text-sub slide-sub">Data & Analytics</div>
                     <h2 class="text-huge slide-title">ABSOLUTE<br>PRECISION.</h2>
@@ -168,7 +174,7 @@
             </div>
 
             <div class="showcase-slide slide-3">
-                <img src="images/04-brand-identity.jpg">
+                <img src="images/04-arc.jpg">
                 <div class="showcase-content">
                     <div class="text-sub slide-sub">Product Campaigns</div>
                     <h2 class="text-huge slide-title">CINEMATIC<br>REVEALS.</h2>
@@ -177,7 +183,7 @@
             </div>
 
             <div class="showcase-slide slide-4">
-                <img src="images/05-product-showcase.jpg">
+                <img src="images/05-pottery.jpg">
                 <div class="showcase-content">
                     <div class="text-sub slide-sub">Editorial Spaces</div>
                     <h2 class="text-huge slide-title">SPATIAL<br>HARMONY.</h2>
@@ -291,3 +297,9 @@
     </script>
 </body>
 </html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(new_html)
+
+print("Rewrote index.html for maximum cinematic purity.")
