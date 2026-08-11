@@ -110,8 +110,13 @@ This is a defining characteristic. Whenever the medium supports interaction, act
 
 **Motion language:** smooth, controlled, precise, cinematic, purposeful. Use fade, slide, scale, reveal, parallax, spring, morph. Establish motion hierarchy — primary elements get strongest motion, tertiary elements stay minimal or static.
 
-**MANDATORY PATTERN — APPLE-STYLE SCROLLYTELLING:**
-Whenever designing a Landing Page or E-Commerce Product Page, you MUST implement GSAP ScrollTrigger or equivalent scroll-linked animations. Use the "Sticky Center Stage" pattern: fix the primary product/hero visual in the center of the viewport, and transform it (rotate, scale, scrub frames) dynamically as the user scrolls, while revealing contextual typography or features on the sides. Do not build static linear pages for products.
+**MANDATORY PATTERN — MAXIMUM GSAP SCROLLYTELLING:**
+Whenever designing a Landing Page or E-Commerce Product Page, you MUST use GSAP ScrollTrigger as the PRIMARY layout and interaction engine for the entire page. Do not limit it to just the hero section. You MUST implement:
+- "Sticky Center Stage": fix the primary product/hero visual in the center and transform it dynamically as the user scrolls.
+- "Horizontal Scroll Sections": Convert long lists or palettes into pinned horizontal scroll areas.
+- "Pinned Titles": Pin section titles while the content scrolls past them.
+- "Staggered Parallax": Reveal elements with varying scroll speeds.
+Do not build static linear pages. Every section should feel connected through continuous scroll-driven motion.
 
 > For specific design modes (web, mobile, dashboard, e-commerce, brand, poster, AI product, image art direction) — read `references/design-modes.md`.
 

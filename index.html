@@ -1833,16 +1833,111 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
             if (e.key === 'ArrowRight') { goToSlide(currentSlide + 1); resetAutoSlide(); }
         });
 
-        // ── Scroll Reveal ──
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        
+
+        
+        // ■■■■ MAXIMUM GSAP SCROLLYTELLING ■■■■
+        if(typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. Reveal Animations (Replacing IntersectionObserver)
+            gsap.utils.toArray('.reveal').forEach(section => {
+                // If it's the visual-dna or philosophy, handle differently
+                if(section.id === 'visual-dna' || section.id === 'philosophy' || section.id === 'pipeline') return;
+                
+                gsap.fromTo(section, 
+                    { opacity: 0, y: 50 }, 
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1.2, 
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // 2. Philosophy - Pinned Title
+            ScrollTrigger.matchMedia({
+                "(min-width: 768px)": function() {
+                    let philTl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: "#philosophy",
+                            start: "top top",
+                            end: "+=100%",
+                            pin: true,
+                            scrub: 1
+                        }
+                    });
+                    philTl.fromTo("#philosophy .philosophy-block", 
+                        { opacity: 0, y: 100 },
+                        { opacity: 1, y: 0, duration: 1 }
+                    ).to("#philosophy .section-title", { opacity: 0.2, duration: 1 }, "<");
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        revealElements.forEach(el => revealObserver.observe(el));
+
+            // 3. Visual DNA - Horizontal Scroll
+            const visualDna = document.getElementById('visual-dna');
+            if(visualDna) {
+                // Animate DNA Grid
+                gsap.fromTo("#visual-dna .dna-grid .dna-cell", 
+                    { opacity: 0, scale: 0.8 },
+                    { 
+                        opacity: 1, 
+                        scale: 1, 
+                        stagger: 0.1,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: "#visual-dna",
+                            start: "top 70%",
+                        }
+                    }
+                );
+
+                // Horizontal scroll for Palette Grid
+                const paletteGrid = document.querySelector('.palette-grid');
+                if(paletteGrid) {
+                    gsap.to(paletteGrid, {
+                        x: () => -(paletteGrid.scrollWidth - window.innerWidth + 100),
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: "#visual-dna",
+                            start: "top top",
+                            end: () => "+=" + (paletteGrid.scrollWidth),
+                            pin: true,
+                            scrub: 1
+                        }
+                    });
+                }
+            }
+
+            // 4. Pipeline - Staggered Parallax
+            const pipeline = document.getElementById('pipeline');
+            if(pipeline) {
+                gsap.fromTo(".pipeline-step", 
+                    { opacity: 0, y: 100, rotationX: -10 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        rotationX: 0,
+                        stagger: 0.2,
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: "#pipeline",
+                            start: "top 60%",
+                            end: "bottom center",
+                            scrub: 1
+                        }
+                    }
+                );
+            }
+        }
+        // ■■■■ END MAXIMUM GSAP ■■■■
 
         // ── Nav scroll effect ──
         const nav = document.getElementById('main-nav');
