@@ -103,6 +103,50 @@
             position: absolute; inset: 0; background: var(--bg); transform-origin: bottom;
         }
         
+        
+        /* Horizontal Archive */
+        .archive-container {
+            height: 300vh; /* space for horizontal scrolling */
+            position: relative;
+        }
+        .archive-sticky {
+            position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
+            display: flex; align-items: center;
+        }
+        .archive-track {
+            display: flex; gap: 10vw; padding: 0 10vw; height: 60vh; align-items: center;
+            width: fit-content;
+        }
+        .archive-item {
+            position: relative; width: 40vw; height: 100%; flex-shrink: 0;
+            overflow: hidden;
+        }
+        .archive-item:nth-child(even) { height: 70%; transform: translateY(15%); }
+        .archive-item img {
+            width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7);
+            transition: filter 0.5s;
+        }
+        .archive-item:hover img { filter: brightness(1); }
+        .archive-label {
+            position: absolute; bottom: 24px; left: 24px; color: var(--text-1);
+            font-size: 1.5rem; font-weight: 700; z-index: 2;
+        }
+
+        /* Promo Video Section */
+        #promo-video {
+            position: relative; width: 100%; height: 100vh; background: #000;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .promo-scene {
+            position: absolute; inset: 0; opacity: 0; display: flex;
+            align-items: center; justify-content: center; flex-direction: column;
+        }
+        .promo-scene img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.3); transform: scale(1.1);
+        }
+        .promo-text { position: relative; z-index: 2; text-align: center; }
+
         /* Editorial Manifesto */
         .manifesto {
             padding: 20vh 5vw; display: flex; flex-direction: column; gap: 15vh;
@@ -204,6 +248,39 @@
         </div>
     </section>
 
+    
+    <!-- HORIZONTAL ARCHIVE (Images 06 - 10) -->
+    <section class="archive-container" id="archive">
+        <div class="archive-sticky">
+            <div style="position:absolute; top: 10vh; left: 5vw; z-index: 10;">
+                <div class="text-sub">The Extended Archive</div>
+                <h2 class="text-huge">MORE<br>OUTPUTS.</h2>
+            </div>
+            <div class="archive-track" id="archive-track">
+                <div class="archive-item"><img src="images/06-ecommerce.jpg"><div class="archive-label">E-Commerce</div></div>
+                <div class="archive-item"><img src="images/07-poster.jpg"><div class="archive-label">Poster Design</div></div>
+                <div class="archive-item"><img src="images/08-social-campaign.jpg"><div class="archive-label">Social Campaign</div></div>
+                <div class="archive-item"><img src="images/09-ai-agent.jpg"><div class="archive-label">AI Agents</div></div>
+                <div class="archive-item"><img src="images/10-data-viz.jpg"><div class="archive-label">Data Visualization</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO VIDEO (Autoplaying Cinematic Cuts) -->
+    <section id="promo-video">
+        <div class="promo-scene p-scene-1">
+            <h2 class="text-massive promo-text">NOT A<br>TEMPLATE.</h2>
+        </div>
+        <div class="promo-scene p-scene-2">
+            <img src="images/01-fintech.jpg">
+            <h2 class="text-massive promo-text" style="color:var(--accent);">AN<br>EXPERIENCE.</h2>
+        </div>
+        <div class="promo-scene p-scene-3">
+            <img src="images/03-mobile-app.jpg">
+            <h2 class="text-massive promo-text">DESIGNER<br>MIND.</h2>
+        </div>
+    </section>
+
     <!-- FOOTER CTA -->
     <section class="footer">
         <div class="text-sub" style="margin-bottom: 24px;">THE FINAL COMMAND</div>
@@ -212,8 +289,94 @@
     </section>
 
     <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
+        // Horizontal Archive Scroll
+        const track = document.getElementById('archive-track');
+        gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#archive",
+                start: "top top",
+                end: "+=200%",
+                scrub: 1,
+                pin: true
+            }
+        });
+
+        // Promo Video Autoplay Sequence (Intersection Observer triggers it)
+        const promoTl = gsap.timeline({ paused: true, repeat: -1 });
+        promoTl
+            // Scene 1: Text only
+            .set('.p-scene-1', { opacity: 1 })
+            .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
+            .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
+            
+            // Scene 2: Image + Text cut
+            .set('.p-scene-2', { opacity: 1 })
+            .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
+            .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
+            .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
+            
+            // Scene 3: Final cut
+            .set('.p-scene-3', { opacity: 1 })
+            .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
+            .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
+            .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
+
+        // Start promo video only when it scrolls into view
+        ScrollTrigger.create({
+            trigger: "#promo-video",
+            start: "top 50%",
+            onEnter: () => promoTl.play(),
+            onLeaveBack: () => promoTl.pause()
+        });
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js">
+        // Horizontal Archive Scroll
+        const track = document.getElementById('archive-track');
+        gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#archive",
+                start: "top top",
+                end: "+=200%",
+                scrub: 1,
+                pin: true
+            }
+        });
+
+        // Promo Video Autoplay Sequence (Intersection Observer triggers it)
+        const promoTl = gsap.timeline({ paused: true, repeat: -1 });
+        promoTl
+            // Scene 1: Text only
+            .set('.p-scene-1', { opacity: 1 })
+            .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
+            .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
+            
+            // Scene 2: Image + Text cut
+            .set('.p-scene-2', { opacity: 1 })
+            .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
+            .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
+            .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
+            
+            // Scene 3: Final cut
+            .set('.p-scene-3', { opacity: 1 })
+            .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
+            .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
+            .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
+
+        // Start promo video only when it scrolls into view
+        ScrollTrigger.create({
+            trigger: "#promo-video",
+            start: "top 50%",
+            onEnter: () => promoTl.play(),
+            onLeaveBack: () => promoTl.pause()
+        });
+
+    </script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -298,6 +461,49 @@
                 }
             });
         });
+    
+        // Horizontal Archive Scroll
+        const track = document.getElementById('archive-track');
+        gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#archive",
+                start: "top top",
+                end: "+=200%",
+                scrub: 1,
+                pin: true
+            }
+        });
+
+        // Promo Video Autoplay Sequence (Intersection Observer triggers it)
+        const promoTl = gsap.timeline({ paused: true, repeat: -1 });
+        promoTl
+            // Scene 1: Text only
+            .set('.p-scene-1', { opacity: 1 })
+            .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
+            .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
+            
+            // Scene 2: Image + Text cut
+            .set('.p-scene-2', { opacity: 1 })
+            .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
+            .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
+            .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
+            
+            // Scene 3: Final cut
+            .set('.p-scene-3', { opacity: 1 })
+            .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
+            .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
+            .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
+
+        // Start promo video only when it scrolls into view
+        ScrollTrigger.create({
+            trigger: "#promo-video",
+            start: "top 50%",
+            onEnter: () => promoTl.play(),
+            onLeaveBack: () => promoTl.pause()
+        });
+
     </script>
 </body>
 </html>
