@@ -3,1686 +3,993 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Mind OS — Master Edition v4.0</title>
-    <meta name="description" content="Designer Mind OS is an elite AI design intelligence system — optimized architecture with on-demand references for cinematic, premium, interactive design.">
+    <title>Designer Mind OS — Master Edition v5.0</title>
+    <meta name="description" content="Designer Mind OS is an elite AI design intelligence system — ultra-immersive interactive experience with cinematic scrollytelling, 3D, and premium motion.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <style>
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           DESIGN TOKENS — Cinematic Concrete Digital
+           DESIGN TOKENS v5.0
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         :root {
-            /* Foundation */
-            --color-black: #000000;
-            --color-bg: #0a0a0a;
-            --color-surface: #111111;
-            --color-surface-elevated: #1a1a1a;
-            --color-surface-hover: #222222;
-            --color-border: #2a2a2a;
-            --color-border-light: #333333;
-
-            /* Text */
-            --color-text: #f0f0f0;
-            --color-text-secondary: #999999;
-            --color-text-muted: #666666;
-
-            /* Accent — Primary: Teal/Cyan */
-            --color-accent: #00d4aa;
-            --color-accent-dim: rgba(0, 212, 170, 0.15);
-            --color-accent-glow: rgba(0, 212, 170, 0.4);
-
-            /* Accent — Secondary: Copper/Orange */
-            --color-copper: #d4783c;
-            --color-copper-dim: rgba(212, 120, 60, 0.15);
-            --color-copper-glow: rgba(212, 120, 60, 0.4);
-
-            /* Spacing */
-            --space-xs: 4px;
-            --space-sm: 8px;
-            --space-md: 16px;
-            --space-lg: 24px;
-            --space-xl: 40px;
-            --space-2xl: 64px;
-            --space-3xl: 96px;
-            --space-4xl: 128px;
-
-            /* Typography */
-            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-2: #1a1a1a;
+            --border: rgba(255,255,255,0.08);
+            --text: #f0f0f0;
+            --text-2: #888888;
+            --text-3: #444444;
+            --accent: #00d4aa;
+            --accent-glow: rgba(0, 212, 170, 0.3);
+            --copper: #e07a3a;
+            --copper-glow: rgba(224, 122, 58, 0.3);
+            --purple: #8b5cf6;
+            --purple-glow: rgba(139, 92, 246, 0.3);
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-
-            /* Motion */
-            --duration-fast: 150ms;
-            --duration-normal: 300ms;
-            --duration-slow: 600ms;
-            --duration-cinematic: 1200ms;
-            --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-            --ease-emphasis: cubic-bezier(0.0, 0, 0.2, 1);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-            /* Radius */
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           RESET & BASE
+           RESET
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; cursor: none; }
         body {
-            font-family: var(--font-display);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            line-height: 1.6;
         }
-
-        ::selection {
-            background: var(--color-accent);
-            color: var(--color-black);
-        }
-
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color var(--duration-fast) var(--ease-standard);
-        }
-        a:hover { color: #fff; }
+        ::selection { background: var(--accent); color: #000; }
+        a { color: inherit; text-decoration: none; }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           NAVIGATION
+           PATTERN 8: CUSTOM CURSOR
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .nav {
+        #cursor-dot {
             position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: var(--space-md) var(--space-xl);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border);
-            transition: background var(--duration-normal) var(--ease-standard);
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+            mix-blend-mode: difference;
+        }
+        #cursor-ring {
+            position: fixed;
+            width: 36px; height: 36px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+            transition: all 0.12s ease-out;
+        }
+        body.cursor-hover #cursor-dot { width: 16px; height: 16px; }
+        body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.3; border-color: var(--copper); }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           PATTERN 13: SCROLL PROGRESS BAR
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            z-index: 9997;
+            width: 0%;
+            transition: width 0.05s linear;
         }
 
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           NAV
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+            padding: 20px 48px;
+            display: flex; align-items: center; justify-content: space-between;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.4s, background 0.4s;
+        }
+        #nav.scrolled {
+            background: rgba(10, 10, 10, 0.9);
+            border-color: var(--border);
+        }
         .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
+            font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            display: flex; align-items: center; gap: 10px;
         }
-
-        .nav-logo-icon {
+        .nav-logo-mark {
             width: 32px; height: 32px;
-            background: linear-gradient(135deg, var(--color-accent), var(--color-copper));
+            background: linear-gradient(135deg, var(--accent), var(--purple));
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 800;
-            color: var(--color-black);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 800; color: #000;
         }
-
-        .nav-logo-text {
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
         .nav-links {
-            display: flex;
-            gap: var(--space-lg);
+            display: flex; gap: 36px;
             list-style: none;
         }
-
         .nav-links a {
-            color: var(--color-text-secondary);
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color var(--duration-fast) var(--ease-standard);
+            font-size: 0.8rem; font-weight: 500;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-2);
+            transition: color 0.25s;
+            cursor: none;
         }
-        .nav-links a:hover { color: var(--color-text); }
-
+        .nav-links a:hover { color: var(--text); }
         .nav-cta {
-            padding: 8px 20px;
-            background: var(--color-text);
-            color: var(--color-black);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border-radius: var(--radius-sm);
-            border: none;
-            cursor: pointer;
-            transition: all var(--duration-fast) var(--ease-standard);
-        }
-        .nav-cta:hover {
-            background: var(--color-accent);
-            color: var(--color-black);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           IMAGE SLIDER / CAROUSEL
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .slider-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background: var(--color-black);
-        }
-
-        .slider-track {
-            display: flex;
-            width: 1000%;
-            height: 100%;
-            transition: transform var(--duration-cinematic) var(--ease-emphasis);
-        }
-
-        .slide {
-            width: 10%;
-            height: 100%;
-            position: relative;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            opacity: 0.85;
-        }
-
-        .slide-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,0.3) 0%,
-                rgba(0,0,0,0.1) 40%,
-                rgba(0,0,0,0.6) 80%,
-                rgba(10,10,10,1) 100%
-            );
-        }
-
-        .slide-label {
-            position: absolute;
-            bottom: 120px;
-            left: var(--space-xl);
-            z-index: 5;
-        }
-
-        .slide-label-tag {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: var(--space-sm);
-        }
-
-        .slide-label-title {
-            font-size: clamp(28px, 4vw, 48px);
-            font-weight: 800;
-            line-height: 1.1;
-            max-width: 500px;
-        }
-
-        /* Slider Controls */
-        .slider-controls {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: var(--space-lg);
-            z-index: 10;
-        }
-
-        .slider-dots {
-            display: flex;
-            gap: var(--space-sm);
-        }
-
-        .slider-dot {
-            width: 40px;
-            height: 3px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all var(--duration-normal) var(--ease-standard);
-            border: none;
-            padding: 0;
-        }
-        .slider-dot.active {
-            background: var(--color-accent);
-            width: 60px;
-        }
-
-        .slider-arrows {
-            display: flex;
-            gap: var(--space-sm);
-        }
-
-        .slider-arrow {
-            width: 44px; height: 44px;
-            border: 1px solid var(--color-border-light);
-            border-radius: 50%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            color: var(--color-text);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all var(--duration-fast) var(--ease-standard);
-        }
-        .slider-arrow:hover {
-            background: var(--color-accent);
-            color: var(--color-black);
-            border-color: var(--color-accent);
-        }
-
-        .slider-counter {
-            position: absolute;
-            top: 100px;
-            right: var(--space-xl);
             font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--color-text-muted);
-            z-index: 10;
+            font-size: 0.75rem; font-weight: 500;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-2);
+            transition: all 0.25s;
+            cursor: none;
+            letter-spacing: 0.05em;
         }
-
-        .slider-counter-current {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--color-text);
-        }
+        .nav-cta:hover { border-color: var(--accent); color: var(--accent); }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           SECTION LAYOUT
+           HERO — STICKY CENTER STAGE (Pattern 1)
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .section {
-            padding: var(--space-4xl) var(--space-xl);
-            max-width: 1200px;
-            margin: 0 auto;
+        #hero {
+            height: 300vh;
+            position: relative;
+        }
+        .hero-sticky {
+            position: sticky; top: 0;
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
         }
 
-        .section-wide {
-            padding: var(--space-4xl) var(--space-xl);
-            max-width: 1400px;
-            margin: 0 auto;
+        /* PATTERN 14: Particle Field background */
+        #hero-canvas {
+            position: absolute; inset: 0;
+            z-index: 0;
+            opacity: 0.4;
         }
 
-        .section-label {
-            font-size: 11px;
-            font-weight: 600;
+        /* PATTERN 2: Dynamic Environment Orb */
+        .hero-orb {
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%,
+                rgba(0, 212, 170, 0.5) 0%,
+                rgba(139, 92, 246, 0.3) 50%,
+                transparent 75%);
+            filter: blur(60px);
+            z-index: 1;
+            will-change: transform;
+        }
+
+        .hero-content {
+            position: relative; z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: var(--space-md);
+            margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 40px; height: 1px;
+            background: var(--accent);
+            opacity: 0.5;
         }
 
-        .section-title {
-            font-size: clamp(32px, 5vw, 56px);
+        /* PATTERN 9: Kinetic Typography */
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 9vw, 8rem);
             font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.03em;
-            max-width: 800px;
-            margin-bottom: var(--space-lg);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 32px;
+            overflow: hidden;
         }
-
-        .section-subtitle {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            line-height: 1.7;
+        .hero-title .word {
+            display: inline-block;
+            overflow: hidden;
         }
+        .hero-title .char {
+            display: inline-block;
+            transform: translateY(110%);
+        }
+        .title-gradient {
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-2);
+            max-width: 500px;
+            margin: 0 auto 48px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hero-ctas {
+            display: flex; gap: 16px; justify-content: center; align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .btn-primary {
+            padding: 16px 36px;
+            background: var(--accent);
+            color: #000;
+            font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 700;
+            border-radius: 8px;
+            letter-spacing: -0.01em;
+            cursor: none;
+            transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+            position: relative; overflow: hidden;
+        }
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+        .btn-secondary {
+            padding: 16px 36px;
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            font-size: 0.9rem; font-weight: 500;
+            border-radius: 8px;
+            cursor: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--text-2); color: var(--text); }
 
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent), transparent);
-            margin: var(--space-xl) 0;
+        /* Hero scroll indicator */
+        .hero-scroll-indicator {
+            position: absolute; bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            opacity: 0;
+        }
+        .scroll-line {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.6); opacity: 0.4; }
+        }
+        .scroll-text {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-3);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           INTRO SECTION
+           SECTION GLOBALS
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .intro {
-            text-align: center;
-            padding: var(--space-4xl) var(--space-xl);
-            position: relative;
+        .section {
+            padding: 120px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
-
-        .intro .section-title { margin: 0 auto var(--space-lg); }
-        .intro .section-subtitle { margin: 0 auto; }
-
-        .intro-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: 6px 16px;
-            background: var(--color-accent-dim);
-            border: 1px solid rgba(0, 212, 170, 0.2);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-accent);
-            letter-spacing: 0.05em;
-            margin-bottom: var(--space-xl);
+        .section-wide {
+            padding: 120px 0;
+            overflow: hidden;
         }
-
-        .intro-badge-dot {
-            width: 6px; height: 6px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
+        .label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 10px;
         }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+        .label::before {
+            content: '';
+            display: block; width: 24px; height: 1px;
+            background: var(--accent);
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            max-width: 520px;
+            line-height: 1.7;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            IDENTITY SECTION
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #identity {
+            padding: 160px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
         .identity-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            margin-top: var(--space-3xl);
-        }
-
-        .identity-card {
-            padding: var(--space-xl);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            transition: all var(--duration-normal) var(--ease-standard);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .identity-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent), transparent);
-            opacity: 0;
-            transition: opacity var(--duration-normal) var(--ease-standard);
-        }
-
-        .identity-card:hover {
-            border-color: var(--color-border-light);
-            background: var(--color-surface-elevated);
-            transform: translateY(-2px);
-        }
-
-        .identity-card:hover::before { opacity: 1; }
-
-        .identity-card-icon {
-            width: 44px; height: 44px;
-            background: var(--color-accent-dim);
-            border-radius: var(--radius-sm);
-            display: flex;
+            gap: 80px;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: var(--space-md);
         }
-
+        .identity-left .section-title {
+            font-size: clamp(3rem, 5.5vw, 5rem);
+        }
+        .identity-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .identity-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+            transition: border-color 0.3s, transform 0.3s var(--ease-spring);
+            cursor: none;
+            /* Pattern 11: Tilt prep */
+            transform-style: preserve-3d;
+        }
+        .identity-card:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            transform: translateY(-4px);
+        }
+        .identity-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
         .identity-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: var(--space-sm);
+            font-family: var(--font-display);
+            font-size: 1rem; font-weight: 700;
+            margin-bottom: 8px;
         }
-
         .identity-card-desc {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            line-height: 1.7;
+            font-size: 0.85rem;
+            color: var(--text-2);
+            line-height: 1.6;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           ROLES BAR
+           PHILOSOPHY — PINNED SECTION (Pattern 3)
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .roles-bar {
-            padding: var(--space-xl) 0;
-            overflow: hidden;
-            border-top: 1px solid var(--color-border);
-            border-bottom: 1px solid var(--color-border);
+        #philosophy-wrapper {
+            height: 250vh;
             position: relative;
         }
-
-        .roles-track {
+        .philosophy-sticky {
+            position: sticky; top: 0;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .philosophy-left { padding-right: 60px; }
+        .philosophy-right {
             display: flex;
-            gap: var(--space-xl);
-            animation: scroll-roles 30s linear infinite;
-            width: max-content;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        .roles-track span {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            white-space: nowrap;
+        .philosophy-quote-block {
+            padding: 32px;
+            border-left: 3px solid var(--accent);
+            background: var(--surface);
+            border-radius: 0 16px 16px 0;
+            opacity: 0;
+            transform: translateX(60px);
         }
-
-        .roles-track span.accent { color: var(--color-accent); }
-        .roles-track span.copper { color: var(--color-copper); }
-
-        @keyframes scroll-roles {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           PHILOSOPHY SECTION
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .philosophy-block {
-            margin-top: var(--space-3xl);
-            padding: var(--space-3xl);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-block::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 200px;
-            background: radial-gradient(ellipse at center bottom, var(--color-accent-dim), transparent);
-            pointer-events: none;
-        }
-
         .philosophy-quote {
-            font-size: clamp(20px, 3vw, 32px);
-            font-weight: 700;
-            line-height: 1.4;
-            max-width: 700px;
-            margin: 0 auto var(--space-lg);
-            letter-spacing: -0.01em;
+            font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: 600;
+            line-height: 1.5;
+            font-style: italic;
         }
-
-        .philosophy-quote em {
-            color: var(--color-accent);
-            font-style: normal;
-        }
-
-        .philosophy-source {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
+        .philosophy-quote em { color: var(--accent); font-style: normal; }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           VISUAL DNA SECTION
+           VISUAL DNA — STATS
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #visual-dna {
+            padding: 120px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .dna-header { margin-bottom: 80px; }
         .dna-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            margin-top: var(--space-3xl);
-            border-radius: var(--radius-md);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+        .dna-stat {
+            padding: 40px 28px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--surface);
             overflow: hidden;
+            position: relative;
+            cursor: none;
         }
-
-        .dna-cell {
-            padding: var(--space-xl) var(--space-lg);
-            background: var(--color-surface);
-            text-align: center;
-            transition: background var(--duration-normal) var(--ease-standard);
+        .dna-stat::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s var(--ease-out);
         }
-
-        .dna-cell:hover { background: var(--color-surface-elevated); }
-
-        .dna-cell-value {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: var(--space-xs);
-            background: linear-gradient(135deg, var(--color-accent), var(--color-copper));
+        .dna-stat:hover::before { transform: scaleX(1); }
+        /* PATTERN 10: Count-up numbers */
+        .dna-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem; font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .dna-label { font-size: 0.85rem; color: var(--text-2); }
 
-        .dna-cell-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           COLOR PALETTE DISPLAY
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .palette-row {
-            display: flex;
-            gap: 3px;
-            margin-top: var(--space-xl);
-            border-radius: var(--radius-md);
+        /* PATTERN 5: Horizontal scroll palette */
+        .palette-track-wrapper {
             overflow: hidden;
-            height: 80px;
-        }
-
-        .palette-swatch {
-            flex: 1;
-            display: flex;
-            align-items: flex-end;
-            padding: var(--space-sm);
             position: relative;
-            cursor: pointer;
-            transition: flex var(--duration-normal) var(--ease-spring);
         }
-
-        .palette-swatch:hover { flex: 2; }
-
-        .palette-swatch-name {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            opacity: 0.8;
+        .palette-track {
+            display: flex; gap: 16px;
+            width: max-content;
+            padding: 0 48px;
         }
-
-        .palette-swatch:nth-child(1) { background: #000000; }
-        .palette-swatch:nth-child(2) { background: #1a1a1a; }
-        .palette-swatch:nth-child(3) { background: #333333; }
-        .palette-swatch:nth-child(4) { background: #00d4aa; color: #000; }
-        .palette-swatch:nth-child(5) { background: #d4783c; color: #000; }
-        .palette-swatch:nth-child(6) { background: #f0f0f0; color: #000; }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           RULES SECTION (GOLDEN RULES)
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .rules-list {
-            margin-top: var(--space-3xl);
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
+        .palette-item {
+            flex-shrink: 0;
+            width: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: none;
         }
-
-        .rule-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-lg);
-            padding: var(--space-lg) var(--space-xl);
-            background: var(--color-surface);
-            transition: all var(--duration-normal) var(--ease-standard);
-            cursor: default;
+        .palette-swatch {
+            height: 120px;
         }
-
-        .rule-item:first-child { border-radius: var(--radius-md) var(--radius-md) 0 0; }
-        .rule-item:last-child { border-radius: 0 0 var(--radius-md) var(--radius-md); }
-
-        .rule-item:hover {
-            background: var(--color-surface-elevated);
-            padding-left: calc(var(--space-xl) + 8px);
+        .palette-info {
+            padding: 16px;
+            background: var(--surface);
         }
-
-        .rule-number {
+        .palette-name {
+            font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .palette-hex {
             font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-accent);
-            min-width: 32px;
+            font-size: 0.75rem;
+            color: var(--text-2);
         }
-
-        .rule-text {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-        }
-
-        .rule-item:hover .rule-text { color: var(--color-text); }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           PIPELINE SECTION
+           RULES — GOLDEN RULES
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #golden-rules {
+            padding: 120px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .rules-header {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: start;
+            margin-bottom: 80px;
+        }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .rule-item {
+            padding: 36px 32px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            position: relative;
+            overflow: hidden;
+            cursor: none;
+            transition: background 0.3s;
+        }
+        .rule-item:hover { background: var(--surface-2); }
+        .rule-item::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .rule-item:hover::after { opacity: 1; }
+        .rule-num {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-3);
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .rule-text {
+            font-family: var(--font-display);
+            font-size: 1rem; font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           PIPELINE — PATTERN 6: Scroll Construction
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #pipeline {
+            padding: 120px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .pipeline-header { margin-bottom: 80px; }
         .pipeline-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-3xl);
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
         }
-
         .pipeline-step {
-            padding: var(--space-lg);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            transition: all var(--duration-normal) var(--ease-standard);
-        }
-
-        .pipeline-step:hover {
-            border-color: var(--color-accent);
-            background: var(--color-surface-elevated);
-            transform: translateY(-2px);
-        }
-
-        .pipeline-step-num {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--color-accent);
-            margin-bottom: var(--space-sm);
-        }
-
-        .pipeline-step-name {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           SCOPE SECTION — DESIGN MODES
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .scope-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-top: var(--space-xl);
-        }
-
-        .scope-tag {
-            padding: 8px 16px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-            transition: all var(--duration-fast) var(--ease-standard);
-            cursor: default;
-        }
-
-        .scope-tag:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            background: var(--color-accent-dim);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           CTA SECTION
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .cta-section {
-            text-align: center;
-            padding: var(--space-4xl) var(--space-xl);
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--color-accent-dim), transparent 70%);
-            pointer-events: none;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-xl);
-            padding: 16px 40px;
-            background: var(--color-text);
-            color: var(--color-black);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border-radius: var(--radius-sm);
-            border: none;
-            cursor: pointer;
-            transition: all var(--duration-normal) var(--ease-spring);
-        }
-
-        .cta-button:hover {
-            background: var(--color-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px var(--color-accent-glow);
-        }
-
-        .cta-button-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-            margin-left: var(--space-md);
-            padding: 16px 40px;
-            background: transparent;
-            color: var(--color-text);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            border: 1px solid var(--color-border-light);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all var(--duration-normal) var(--ease-standard);
-        }
-
-        .cta-button-secondary:hover {
-            border-color: var(--color-text);
-            background: var(--color-surface);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           FOOTER
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .footer {
-            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
-            text-align: center;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .footer-logo {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-md);
-        }
-
-        .footer-copy {
-            font-size: 12px;
-            color: var(--color-text-muted);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-lg);
-            margin-top: var(--space-md);
-        }
-
-        .footer-links a {
-            font-size: 12px;
-            color: var(--color-text-muted);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           SCROLL ANIMATIONS
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .reveal {
+            padding: 24px 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
             opacity: 0;
-            transform: translateY(30px);
-            transition: all var(--duration-cinematic) var(--ease-emphasis);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           RESPONSIVE
-           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        @media (max-width: 480px) {
-            .dna-grid { grid-template-columns: 1fr 1fr; }
-            .pipeline-grid { grid-template-columns: 1fr; }
-            .palette-row { height: 60px; }
-        }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: var(--color-bg);
-            z-index: 100000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        .preloader-logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            color: var(--color-text);
-            animation: pulse-preloader 1.5s infinite;
-        }
-        @keyframes pulse-preloader {
-            0%, 100% { opacity: 0.3; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-        .preloader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-
-        /* Footer */
-        .site-footer {
-            padding: var(--space-xl);
-            text-align: center;
-            border-top: 1px solid var(--color-border);
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: var(--color-bg);
+            transform: translateY(40px);
+            cursor: none;
+            transition: border-color 0.3s, transform 0.3s var(--ease-spring);
             position: relative;
-            z-index: 100;
-        }
-
-        
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            html, body { overflow-x: hidden; width: 100%; max-width: 100%; position: relative; padding: 0; margin: 0; }
-            /* Navbar */
-            .nav { padding: 15px; }
-            .nav-links { display: none; }
-            .nav-cta { padding: 0.5rem 1rem; font-size: 0.8rem; }
-            .nav-logo-text { display: none; }
-            
-            /* Typography Scaling */
-            :root {
-                --space-xl: 40px;
-                --space-2xl: 60px;
-            }
-            .hero-title { font-size: 2.5rem; text-align: center; }
-            .section-title { font-size: 2rem; text-align: center; }
-            .section-subtitle { font-size: 1rem; text-align: center; padding: 0 10px; }
-            
-            /* Center Intro section text */
-            #intro {
-                text-align: center;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            /* Slider Section */
-            .slider-section {
-                width: 100%;
-                height: 60vh;
-                min-height: 400px;
-            }
-            .slide img {
-                object-fit: cover;
-                object-position: center center;
-            }
-            .slide-label {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 80px;
-                text-align: center;
-                width: 90%;
-            }
-            .slide-label-title {
-                font-size: 24px;
-            }
-            .slide-label-tag {
-                margin-bottom: 5px;
-            }
-            .slider-counter {
-                right: 20px;
-                top: 70px;
-            }
-            .slider-counter-current {
-                font-size: 20px;
-            }
-            
-            /* Make slider controls fit and center */
-            .slider-controls {
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 100%;
-                justify-content: center;
-                gap: 15px;
-                padding: 0 10px;
-            }
-            .slider-arrows {
-                gap: 8px;
-            }
-            .slider-arrow {
-                width: 36px; height: 36px; font-size: 14px;
-            }
-            .slider-dot {
-                width: 12px;
-                margin: 0 2px;
-            }
-            .slider-dot.active {
-                width: 24px;
-            }
-            
-            /* Grids */
-            .identity-grid, .dna-grid, .pipeline-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Rules List */
-            .rule-item { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .rule-number { margin-right: 0; }
-            
-            /* Scope Tags */
-            .scope-tags { gap: 10px; justify-content: center; }
-            .scope-tag { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
-            
-            /* Promo Video Overrides */
-            #promo-video-section {
-                height: 80vh;
-            }
-            #promo-video-section .title-huge { font-size: 10vw !important; }
-            #promo-video-section .title-sub { font-size: 3vw !important; letter-spacing: 0.1em !important; }
-            #promo-video-section .scene-label { padding: 20px; text-align: center; }
-            #promo-video-section .scene-label h2 { font-size: 1.5rem; }
-            #promo-video-section .scene-label p { font-size: 0.9rem; }
-        }
-
-</style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<style>
-
-
-        /* --- SCROLLYTELLING SECTION --- */
-        #scrollytelling-section {
-            position: relative;
-            width: 100%;
-            background: var(--color-black);
-            height: 400vh;
-        }
-        .scroll-sticky-container {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
-        .core-visual {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, var(--color-accent), #050505);
-            box-shadow: 0 0 60px rgba(45, 212, 191, 0.3), inset 0 0 40px rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            transform-style: preserve-3d;
-            z-index: 5;
-            will-change: transform;
+        .pipeline-step:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px) !important;
         }
-        .core-ring {
-            position: absolute;
-            top: -20px; left: -20px; right: -20px; bottom: -20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 50%;
-            transform: rotateX(60deg) rotateY(0deg);
-        }
-        .core-ring-2 {
-            position: absolute;
-            top: -40px; left: -40px; right: -40px; bottom: -40px;
-            border: 1px dashed rgba(45, 212, 191, 0.2);
-            border-radius: 50%;
-            transform: rotateX(70deg) rotateY(30deg);
-        }
-        .scroll-text-item {
-            position: absolute;
-            width: 300px;
+        .pipeline-step::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
             opacity: 0;
-            transform: translateY(30px);
-            z-index: 10;
+            transition: opacity 0.3s;
         }
-        .scroll-text-left { left: 10%; text-align: left; }
-        .scroll-text-right { right: 10%; text-align: right; }
-        .scroll-text-item h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-        .scroll-text-item p {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-        }
-        @media (max-width: 768px) {
-            .scroll-text-item {
-                width: 80%;
-                left: 10% !important;
-                right: auto !important;
-                text-align: center !important;
-                top: 15%;
-            }
-            .core-visual {
-                width: 200px;
-                height: 200px;
-                margin-top: 20vh;
-            }
-        }
-
-        /* --- PROMO VIDEO STYLES --- */
-#promo-video-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: #050505;
-    color: #fff;
-    overflow: hidden;
-    margin-top: 20px;
-    margin-bottom: 60px;
-}
-
-#promo-video-section * { margin: 0; padding: 0; box-sizing: border-box; }
-
-
-/* Film Grain & Vignette for Cinematic Feel */
-#promo-video-section .noise {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-opacity: 0.04; z-index: 1000; pointer-events: none;
-}
-#promo-video-section .vignette {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: radial-gradient(circle, transparent 50%, #050505 150%);
-z-index: 999; pointer-events: none;
-}
-
-/* Container */
-#promo-video-section #video-container { position: relative; width: 100%; height: 100%; display: none; }
-#promo-video-section .scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-direction: column; }
-
-/* Typography */
-#promo-video-section h1, #promo-video-section h2, #promo-video-section h3 { text-align: center; }
-#promo-video-section .title-huge { font-size: 6vw; font-weight: 900; letter-spacing: -0.05em; line-height: 1; text-transform: uppercase; }
-#promo-video-section .title-sub { font-size: 2.5vw; font-weight: 300; letter-spacing: 0.2em; color: #f59e0b; margin-top: 1rem; }
-#promo-video-section .text-lead { font-size: 4vw; font-weight: 600; letter-spacing: -0.03em; }
-#promo-video-section .text-highlight { color: #2dd4bf; }
-
-#promo-video-section .scene-label {
-position: absolute; bottom: 8%; left: 8%;
-text-align: left; z-index: 10;
-}
-#promo-video-section .scene-label h2 { font-size: 3vw; font-weight: 800; letter-spacing: -0.02em; text-align: left; }
-#promo-video-section .scene-label p { font-size: 1.5vw; color: #a3a3a3; font-weight: 400; margin-top: 0.5rem; text-align: left; }
-
-#promo-video-section .mono-text { font-family: 'JetBrains Mono', monospace; color: #2dd4bf; font-size: 1.5vw; margin-top: 2rem; }
-
-/* Images & Masking */
-#promo-video-section .img-wrapper {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-will-change: clip-path;
-}
-#promo-video-section .bg-img {
-width: 100%; height: 100%; object-fit: cover;
-filter: brightness(0.6) contrast(1.1);
-transform: scale(1.2);
-will-change: transform;
-}
-
-/* Start UI */
-#promo-video-section #start-ui {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-display: flex; justify-content: center; align-items: center;
-background: #0a0a0a; z-index: 2000;
-}
-#promo-video-section #start-btn {
-padding: 1.5rem 4rem; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; font-weight: 700;
-background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2);
-cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 0.1em;
-}
-#promo-video-section #start-btn:hover { background: #fff; color: #000; border-color: #fff; }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: var(--color-bg);
-            z-index: 100000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        .preloader-logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            color: var(--color-text);
-            animation: pulse-preloader 1.5s infinite;
-        }
-        @keyframes pulse-preloader {
-            0%, 100% { opacity: 0.3; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-        .preloader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-
-        /* Footer */
-        .site-footer {
-            padding: var(--space-xl);
-            text-align: center;
-            border-top: 1px solid var(--color-border);
+        .pipeline-step:hover::before { opacity: 1; }
+        .pipeline-step-num {
             font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: var(--color-bg);
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+        .pipeline-step-name {
+            font-family: var(--font-display);
+            font-size: 0.85rem; font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SCOPE — PATTERN 12: Marquee Ticker
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #scope {
+            padding: 120px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .scope-header { margin-bottom: 60px; }
+        .marquee-wrapper {
+            overflow: hidden;
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+        .marquee-track {
+            display: flex; gap: 40px;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .marquee-item {
+            flex-shrink: 0;
+            font-family: var(--font-display);
+            font-size: 0.85rem; font-weight: 700;
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--text-2);
+            white-space: nowrap;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .marquee-item.accent { border-color: var(--accent); color: var(--accent); }
+        .marquee-item.copper { border-color: var(--copper); color: var(--copper); }
+        .marquee-item.purple { border-color: var(--purple); color: var(--purple); }
+        .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CINEMATIC PROMO SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #promo {
+            height: 200vh;
             position: relative;
-            z-index: 100;
+        }
+        .promo-sticky {
+            position: sticky; top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .promo-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+        }
+        .promo-orb-1 {
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(80px);
+            top: -100px; right: -100px;
+        }
+        .promo-orb-2 {
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(60px);
+            bottom: -50px; left: -50px;
+        }
+        .promo-content {
+            position: relative; z-index: 2;
+            text-align: center;
+            padding: 0 48px;
+        }
+        .promo-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px;
+            border: 1px solid var(--purple);
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem; letter-spacing: 0.15em;
+            color: var(--purple);
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .promo-title {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 9vw, 10rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            margin-bottom: 40px;
+        }
+        .promo-title .line { overflow: hidden; display: block; }
+        .promo-title .line-inner { display: block; transform: translateY(110%); }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FOOTER CTA
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #footer-cta {
+            padding: 120px 48px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .footer-glow {
+            position: absolute; top: -200px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(40px);
+            pointer-events: none;
+        }
+        .footer-cta-content { position: relative; z-index: 1; }
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        .footer-sub {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            margin-bottom: 48px;
+        }
+        footer {
+            padding: 32px 48px;
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-brand {
+            font-family: var(--font-mono);
+            font-size: 0.75rem; color: var(--text-3);
+        }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            font-size: 0.8rem; color: var(--text-2);
+            transition: color 0.2s;
+            cursor: none;
+        }
+        .footer-links a:hover { color: var(--accent); }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           REDUCED MOTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            .marquee-track { animation: none; }
+            #cursor-dot, #cursor-ring { display: none; }
         }
 
-        
-        /* --- MOBILE RESPONSIVENESS --- */
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           MOBILE
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         @media (max-width: 768px) {
-            html, body { overflow-x: hidden; width: 100%; max-width: 100%; position: relative; padding: 0; margin: 0; }
-            /* Navbar */
-            .nav { padding: 15px; }
+            #nav { padding: 16px 20px; }
             .nav-links { display: none; }
-            .nav-cta { padding: 0.5rem 1rem; font-size: 0.8rem; }
-            .nav-logo-text { display: none; }
-            
-            /* Typography Scaling */
-            :root {
-                --space-xl: 40px;
-                --space-2xl: 60px;
-            }
-            .hero-title { font-size: 2.5rem; text-align: center; }
-            .section-title { font-size: 2rem; text-align: center; }
-            .section-subtitle { font-size: 1rem; text-align: center; padding: 0 10px; }
-            
-            /* Center Intro section text */
-            #intro {
-                text-align: center;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            /* Slider Section */
-            .slider-section {
-                width: 100%;
-                height: 60vh;
-                min-height: 400px;
-            }
-            .slide img {
-                object-fit: cover;
-                object-position: center center;
-            }
-            .slide-label {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 80px;
-                text-align: center;
-                width: 90%;
-            }
-            .slide-label-title {
-                font-size: 24px;
-            }
-            .slide-label-tag {
-                margin-bottom: 5px;
-            }
-            .slider-counter {
-                right: 20px;
-                top: 70px;
-            }
-            .slider-counter-current {
-                font-size: 20px;
-            }
-            
-            /* Make slider controls fit and center */
-            .slider-controls {
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 100%;
-                justify-content: center;
-                gap: 15px;
-                padding: 0 10px;
-            }
-            .slider-arrows {
-                gap: 8px;
-            }
-            .slider-arrow {
-                width: 36px; height: 36px; font-size: 14px;
-            }
-            .slider-dot {
-                width: 12px;
-                margin: 0 2px;
-            }
-            .slider-dot.active {
-                width: 24px;
-            }
-            
-            /* Grids */
-            .identity-grid, .dna-grid, .pipeline-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Rules List */
-            .rule-item { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .rule-number { margin-right: 0; }
-            
-            /* Scope Tags */
-            .scope-tags { gap: 10px; justify-content: center; }
-            .scope-tag { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
-            
-            /* Promo Video Overrides */
-            #promo-video-section {
-                height: 80vh;
-            }
-            #promo-video-section .title-huge { font-size: 10vw !important; }
-            #promo-video-section .title-sub { font-size: 3vw !important; letter-spacing: 0.1em !important; }
-            #promo-video-section .scene-label { padding: 20px; text-align: center; }
-            #promo-video-section .scene-label h2 { font-size: 1.5rem; }
-            #promo-video-section .scene-label p { font-size: 0.9rem; }
+            .section, #identity, #visual-dna, #golden-rules, #pipeline, #scope, #footer-cta { padding: 80px 20px; }
+            .identity-grid { grid-template-columns: 1fr; gap: 48px; }
+            .identity-cards { grid-template-columns: 1fr 1fr; }
+            .dna-grid { grid-template-columns: repeat(2, 1fr); }
+            .pipeline-grid { grid-template-columns: repeat(3, 1fr); }
+            .rules-header { grid-template-columns: 1fr; gap: 40px; }
+            .rules-grid { grid-template-columns: 1fr 1fr; }
+            .hero-orb { width: 300px; height: 300px; }
+            .philosophy-sticky { grid-template-columns: 1fr; padding: 40px 20px; }
+            .philosophy-left { display: none; }
+            #cursor-dot, #cursor-ring { display: none; }
+            html { cursor: auto; }
+            footer { flex-direction: column; gap: 16px; text-align: center; }
         }
-
-</style>
+    </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-logo">DM</div>
-    </div>
-
-
-    <!-- ━━━━ NAVIGATION ━━━━ -->
-    <nav class="nav" id="main-nav">
+    <!-- NAV -->
+    <nav id="nav">
         <div class="nav-logo">
-            <div class="nav-logo-icon">DM</div>
-            <span class="nav-logo-text">Designer Mind</span>
+            <div class="nav-logo-mark">DM</div>
+            DESIGNER MIND
         </div>
         <ul class="nav-links">
             <li><a href="#identity">Identity</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#philosophy-wrapper">Philosophy</a></li>
             <li><a href="#visual-dna">Visual DNA</a></li>
             <li><a href="#golden-rules">Rules</a></li>
             <li><a href="#pipeline">Pipeline</a></li>
             <li><a href="#scope">Scope</a></li>
         </ul>
-        <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="nav-cta">GitHub →</a>
+        <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="nav-cta">GITHUB →</a>
     </nav>
 
-    <!-- ━━━━ IMAGE SLIDER ━━━━ -->
-    <section class="slider-section" id="slider">
-        <div class="slider-counter">
-            <span class="slider-counter-current" id="slider-current">01</span>
-            <span> / 10</span>
-        </div>
+    <!-- ====== HERO — Sticky Center Stage ====== -->
+    <section id="hero">
+        <div class="hero-sticky">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-orb" id="hero-orb"></div>
 
-        <div class="slider-track" id="slider-track">
-            <div class="slide">
-                <img src="images/01-fintech.jpg" alt="Fintech Landing Page — Cinematic Dark Design">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Fintech Landing Page</div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">Master Edition v5.0</div>
+                <h1 class="hero-title">
+                    <span class="word"><span class="char">D</span><span class="char">E</span><span class="char">S</span><span class="char">I</span><span class="char">G</span><span class="char">N</span><span class="char">E</span><span class="char">R</span></span>&nbsp;
+                    <span class="word title-gradient"><span class="char">M</span><span class="char">I</span><span class="char">N</span><span class="char">D</span></span><br>
+                    <span class="word"><span class="char">O</span><span class="char">S</span></span>
+                </h1>
+                <p class="hero-sub">An elite AI design intelligence that thinks as art director, creative developer, and experience designer — simultaneously.</p>
+                <div class="hero-ctas">
+                    <a href="#identity" class="btn-primary">Explore the System</a>
+                    <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="btn-secondary">View on GitHub</a>
                 </div>
             </div>
-            <div class="slide">
-                <img src="images/02-ai-dashboard.jpg" alt="AI Dashboard — Real-time Data Visualization">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">AI Analytics Dashboard</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/03-mobile-app.jpg" alt="Mobile App — Premium Dark UI">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Mobile App Design</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/04-brand-identity.jpg" alt="Brand Identity — Visual System">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Brand Identity System</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/05-product-showcase.jpg" alt="Product Showcase — Cinematic Presentation">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Product Showcase</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/06-ecommerce.jpg" alt="E-Commerce — Luxury Product Page">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">E-Commerce Product Page</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/07-poster.jpg" alt="Event Poster — Cinematic Typography">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Event Poster Design</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/08-social-campaign.jpg" alt="Social Media — Campaign Consistency">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Social Media Campaign</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/09-ai-agent.jpg" alt="AI Agent — Beyond Chat Interface">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">AI Agent Interface</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/10-data-viz.jpg" alt="Data Visualization — Real-time Analytics">
-                <div class="slide-overlay"></div>
-                <div class="slide-label">
-                    <div class="slide-label-tag">Example Output</div>
-                    <div class="slide-label-title">Data Visualization</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="slider-controls">
-            <div class="slider-arrows">
-                <button class="slider-arrow" id="slider-prev" aria-label="Previous slide">←</button>
-                <button class="slider-arrow" id="slider-next" aria-label="Next slide">→</button>
-            </div>
-            <div class="slider-dots" id="slider-dots">
-                <button class="slider-dot active" data-index="0" aria-label="Slide 1"></button>
-                <button class="slider-dot" data-index="1" aria-label="Slide 2"></button>
-                <button class="slider-dot" data-index="2" aria-label="Slide 3"></button>
-                <button class="slider-dot" data-index="3" aria-label="Slide 4"></button>
-                <button class="slider-dot" data-index="4" aria-label="Slide 5"></button>
-                <button class="slider-dot" data-index="5" aria-label="Slide 6"></button>
-                <button class="slider-dot" data-index="6" aria-label="Slide 7"></button>
-                <button class="slider-dot" data-index="7" aria-label="Slide 8"></button>
-                <button class="slider-dot" data-index="8" aria-label="Slide 9"></button>
-                <button class="slider-dot" data-index="9" aria-label="Slide 10"></button>
+            <div class="hero-scroll-indicator" id="hero-scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">scroll</span>
             </div>
         </div>
     </section>
 
-
-    <!-- ━━━━ INTRO ━━━━ -->
-    <section class="intro reveal" id="intro">
-        <div class="intro-badge">
-            <span class="intro-badge-dot"></span>
-            Master Edition v4.0
-        </div>
-        <h1 class="section-title">
-            Design Intelligence,<br>Not Template Generation.
-        </h1>
-        <p class="section-subtitle">
-            Designer Mind OS is an optimized AI skill with lean core + on-demand references that transforms any coding assistant into an elite design intelligence — thinking as Art Director, UX Designer, Creative Developer, and Visual Strategist simultaneously.
-        </p>
-    </section>
-
-    <!-- 🍎 SCROLLYTELLING SECTION -->
-    <section id="scrollytelling-section">
-        <div class="scroll-sticky-container">
-            <!-- Central Visual (AI Core) -->
-            <div class="core-visual">
-                <div class="core-ring"></div>
-                <div class="core-ring-2"></div>
+    <!-- ====== IDENTITY ====== -->
+    <section id="identity">
+        <div class="identity-grid">
+            <div class="identity-left">
+                <div class="label">What It Is</div>
+                <h2 class="section-title">Not a tool.<br>A design <em style="color: var(--accent); font-style:normal">intelligence.</em></h2>
+                <p class="section-sub" style="margin-top: 20px;">You are a design intelligence that thinks simultaneously as art director, UX designer, brand strategist, motion designer, creative developer, and design system architect.</p>
             </div>
-            
-            <!-- Features (Hidden initially) -->
-            <div class="scroll-text-item scroll-text-left" id="scroll-feat-1">
-                <h2>Cinematic DNA</h2>
-                <p>Not just dark mode. Deep space lighting, elegant glassmorphism, and intentional focal points.</p>
-            </div>
-            <div class="scroll-text-item scroll-text-right" id="scroll-feat-2">
-                <h2>Zero Templates</h2>
-                <p>Every element is generated purely from fundamental design principles, not copied structures.</p>
-            </div>
-            <div class="scroll-text-item scroll-text-left" id="scroll-feat-3">
-                <h2>Motion Intelligence</h2>
-                <p>Fluid, physics-based interactions that respond to user intent, just like this one.</p>
+            <div class="identity-cards">
+                <div class="identity-card">
+                    <div class="identity-card-icon">🎨</div>
+                    <div class="identity-card-title">Art Direction</div>
+                    <div class="identity-card-desc">Cinematic Concrete Digital visual language — dark, sophisticated, editorial, atmospheric.</div>
+                </div>
+                <div class="identity-card">
+                    <div class="identity-card-icon">⚡</div>
+                    <div class="identity-card-title">Interaction Engine</div>
+                    <div class="identity-card-desc">15 mandatory interaction patterns. GSAP ScrollTrigger as primary engine. Every section moves.</div>
+                </div>
+                <div class="identity-card">
+                    <div class="identity-card-icon">🧠</div>
+                    <div class="identity-card-title">Anti-Generic</div>
+                    <div class="identity-card-desc">Self-critique engine that rejects templates. Optimizes for intentional, specific, memorable.</div>
+                </div>
+                <div class="identity-card">
+                    <div class="identity-card-icon">🎬</div>
+                    <div class="identity-card-title">Visual DNA System</div>
+                    <div class="identity-card-desc">Recognizable design signature that adapts to any industry without losing its character.</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ━━━━ ROLES BAR ━━━━ -->
-    <div class="roles-bar">
-        <div class="roles-track">
-            <span class="accent">Art Director</span>
-            <span>·</span>
-            <span>UX Designer</span>
-            <span>·</span>
-            <span class="copper">UI Designer</span>
-            <span>·</span>
-            <span>Brand Strategist</span>
-            <span>·</span>
-            <span class="accent">Motion Designer</span>
-            <span>·</span>
-            <span>Creative Developer</span>
-            <span>·</span>
-            <span class="copper">Interaction Designer</span>
-            <span>·</span>
-            <span>AI Product Designer</span>
-            <span>·</span>
-            <span class="accent">Visual Storyteller</span>
-            <span>·</span>
-            <span>Design System Architect</span>
-            <span>·</span>
-            <span class="copper">Prompt Engineer</span>
-            <span>·</span>
-            <!-- Duplicate for seamless loop -->
-            <span class="accent">Art Director</span>
-            <span>·</span>
-            <span>UX Designer</span>
-            <span>·</span>
-            <span class="copper">UI Designer</span>
-            <span>·</span>
-            <span>Brand Strategist</span>
-            <span>·</span>
-            <span class="accent">Motion Designer</span>
-            <span>·</span>
-            <span>Creative Developer</span>
-            <span>·</span>
-            <span class="copper">Interaction Designer</span>
-            <span>·</span>
-            <span>AI Product Designer</span>
-            <span>·</span>
-            <span class="accent">Visual Storyteller</span>
-            <span>·</span>
-            <span>Design System Architect</span>
-            <span>·</span>
-            <span class="copper">Prompt Engineer</span>
-            <span>·</span>
+    <!-- ====== PHILOSOPHY — Pinned ====== -->
+    <div id="philosophy-wrapper">
+        <div class="philosophy-sticky">
+            <div class="philosophy-left">
+                <div class="label">Design Philosophy</div>
+                <h2 class="section-title" id="phil-title">Design with<br>intention.</h2>
+                <p class="section-sub" style="margin-top: 20px;">Every element must earn its existence. If it doesn't improve UX, hierarchy, emotion, brand, understanding, interaction, or memorability — it is removed.</p>
+            </div>
+            <div class="philosophy-right">
+                <div class="philosophy-quote-block" id="phil-q1">
+                    <p class="philosophy-quote">"The best design is not the design with the most effects. The best design is the design where <em>every element has a reason</em>."</p>
+                </div>
+                <div class="philosophy-quote-block" id="phil-q2">
+                    <p class="philosophy-quote">"Design with intention. Hierarchy before decoration. Typography before effects. <em>Functional before decorative.</em>"</p>
+                </div>
+                <div class="philosophy-quote-block" id="phil-q3">
+                    <p class="philosophy-quote">"Output standard: every web design must feel like it belongs on <em>Awwwards, Dribbble's Popular, or an Apple product launch</em>."</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- ━━━━ IDENTITY ━━━━ -->
-    <section class="section reveal" id="identity">
-        <div class="section-label">Core Identity</div>
-        <h2 class="section-title">Not a generator.<br>A design decision engine.</h2>
-        <p class="section-subtitle">
-            Designer Mind determines WHAT should exist, WHY it should exist, HOW it should look, behave, and feel — then implements it with production-ready precision.
-        </p>
-
-        <div class="identity-grid">
-            <div class="identity-card">
-                <div class="identity-card-icon">🎬</div>
-                <div class="identity-card-title">Cinematic Vision</div>
-                <div class="identity-card-desc">Every composition is treated like a film frame — controlled lighting, dramatic shadows, focal highlights, and atmospheric depth create memorable visual experiences.</div>
-            </div>
-            <div class="identity-card">
-                <div class="identity-card-icon">⚡</div>
-                <div class="identity-card-title">Interaction Intelligence</div>
-                <div class="identity-card-desc">Automatically scans every design for meaningful interaction opportunities across 10 dimensions: time, data, objects, space, input, scroll, state, generation, configuration, and discovery.</div>
-            </div>
-            <div class="identity-card">
-                <div class="identity-card-icon">🧬</div>
-                <div class="identity-card-title">Visual DNA System</div>
-                <div class="identity-card-desc">A recognizable design signature — Cinematic Concrete Digital — that adapts to any industry while maintaining a consistent premium identity across all outputs.</div>
-            </div>
-            <div class="identity-card">
-                <div class="identity-card-icon">🔍</div>
-                <div class="identity-card-title">Self-Critique Engine</div>
-                <div class="identity-card-desc">Before finalizing, an internal Senior Art Director ruthlessly evaluates composition, hierarchy, typography, originality, and technical realism. Generic output is automatically rejected.</div>
-            </div>
+    <!-- ====== VISUAL DNA ====== -->
+    <section id="visual-dna">
+        <div class="dna-header">
+            <div class="label">Signature Visual DNA</div>
+            <h2 class="section-title">Cinematic.<br>Concrete. Digital.</h2>
         </div>
-    </section>
 
-
-    <!-- ━━━━ PHILOSOPHY ━━━━ -->
-    <section class="section" id="philosophy">
-        <div class="section-label">Design Philosophy</div>
-        <h2 class="section-title">Design with intention.</h2>
-        <p class="section-subtitle">
-            Every element must earn its existence. If it doesn't improve UX, hierarchy, emotion, brand, understanding, interaction, or memorability — it is removed.
-        </p>
-
-        <div class="philosophy-block">
-            <div class="philosophy-quote">
-                "The best design is not the design with the most effects. The best design is the design where <em>every element has a reason</em>."
-            </div>
-            <div class="philosophy-source">§5 — Golden Design Principle</div>
-        </div>
-    </section>
-
-
-    <!-- ━━━━ VISUAL DNA ━━━━ -->
-    <section class="section-wide" id="visual-dna">
-        <div class="section-label">Signature Visual DNA</div>
-        <h2 class="section-title">Cinematic Concrete Digital.</h2>
-        <p class="section-subtitle">
-            The recognizable design language — intelligent, premium, technological, cinematic, confident, and memorable.
-        </p>
-
+        <!-- Count-up stats -->
         <div class="dna-grid">
-            <div class="dna-cell">
-                <div class="dna-cell-value">10+3</div>
-                <div class="dna-cell-label">Core + References</div>
+            <div class="dna-stat">
+                <div class="dna-number" data-target="15">0</div>
+                <div class="dna-label">Interaction Patterns</div>
             </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">11</div>
-                <div class="dna-cell-label">Golden Rules</div>
+            <div class="dna-stat">
+                <div class="dna-number" data-target="11">0</div>
+                <div class="dna-label">Golden Rules</div>
             </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">24</div>
-                <div class="dna-cell-label">Pipeline Steps</div>
+            <div class="dna-stat">
+                <div class="dna-number" data-target="24">0</div>
+                <div class="dna-label">Pipeline Steps</div>
             </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">10</div>
-                <div class="dna-cell-label">Interaction Scans</div>
-            </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">8</div>
-                <div class="dna-cell-label">Design Modes</div>
-            </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">7</div>
-                <div class="dna-cell-label">QA Systems</div>
-            </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">5</div>
-                <div class="dna-cell-label">Intelligence Layers</div>
-            </div>
-            <div class="dna-cell">
-                <div class="dna-cell-value">9</div>
-                <div class="dna-cell-label">Industry Adaptations</div>
+            <div class="dna-stat">
+                <div class="dna-number" data-target="5">0</div>
+                <div class="dna-label">Edition Version</div>
             </div>
         </div>
 
-        <!-- Color Palette -->
-        <div style="margin-top: var(--space-3xl);">
-            <div class="section-label">Color Language</div>
-            <div class="palette-row">
-                <div class="palette-swatch"><span class="palette-swatch-name" style="color:#666">Black</span></div>
-                <div class="palette-swatch"><span class="palette-swatch-name" style="color:#666">Charcoal</span></div>
-                <div class="palette-swatch"><span class="palette-swatch-name">Graphite</span></div>
-                <div class="palette-swatch"><span class="palette-swatch-name">Teal</span></div>
-                <div class="palette-swatch"><span class="palette-swatch-name">Copper</span></div>
-                <div class="palette-swatch"><span class="palette-swatch-name">White</span></div>
+        <!-- Horizontal scrolling palette (Pattern 5) -->
+        <div class="label" style="padding: 0 48px; margin-bottom: 24px;">Signature Palette</div>
+        <div class="palette-track-wrapper">
+            <div class="palette-track" id="palette-track">
+                <div class="palette-item"><div class="palette-swatch" style="background:#0a0a0a;"></div><div class="palette-info"><div class="palette-name">Deep Space</div><div class="palette-hex">#0a0a0a</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#111111;"></div><div class="palette-info"><div class="palette-name">Graphite</div><div class="palette-hex">#111111</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#1a1a1a;"></div><div class="palette-info"><div class="palette-name">Charcoal</div><div class="palette-hex">#1a1a1a</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#00d4aa;"></div><div class="palette-info"><div class="palette-name">Teal Primary</div><div class="palette-hex">#00d4aa</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#8b5cf6;"></div><div class="palette-info"><div class="palette-name">Electric Purple</div><div class="palette-hex">#8b5cf6</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#e07a3a;"></div><div class="palette-info"><div class="palette-name">Copper</div><div class="palette-hex">#e07a3a</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#f0f0f0;"></div><div class="palette-info"><div class="palette-name">Off White</div><div class="palette-hex">#f0f0f0</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#2a2a2a; border: 1px solid #333;"></div><div class="palette-info"><div class="palette-name">Border</div><div class="palette-hex">#2a2a2a</div></div></div>
+                <!-- duplicate for infinite scroll feel -->
+                <div class="palette-item"><div class="palette-swatch" style="background:#0a0a0a;"></div><div class="palette-info"><div class="palette-name">Deep Space</div><div class="palette-hex">#0a0a0a</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#00d4aa;"></div><div class="palette-info"><div class="palette-name">Teal Primary</div><div class="palette-hex">#00d4aa</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#8b5cf6;"></div><div class="palette-info"><div class="palette-name">Electric Purple</div><div class="palette-hex">#8b5cf6</div></div></div>
+                <div class="palette-item"><div class="palette-swatch" style="background:#e07a3a;"></div><div class="palette-info"><div class="palette-name">Copper</div><div class="palette-hex">#e07a3a</div></div></div>
             </div>
         </div>
     </section>
 
-
-    <!-- ━━━━ GOLDEN RULES ━━━━ -->
-    <section class="section reveal" id="golden-rules">
-        <div class="section-label">§107 — Golden Rules</div>
-        <h2 class="section-title">15 rules.<br>Zero exceptions.</h2>
-
-        <div class="rules-list">
-            <div class="rule-item"><span class="rule-number">01</span><span class="rule-text">Design with intention.</span></div>
-            <div class="rule-item"><span class="rule-number">02</span><span class="rule-text">Hierarchy before decoration.</span></div>
-            <div class="rule-item"><span class="rule-number">03</span><span class="rule-text">Typography before effects.</span></div>
-            <div class="rule-item"><span class="rule-number">04</span><span class="rule-text">Functional interaction before decorative interaction.</span></div>
-            <div class="rule-item"><span class="rule-number">05</span><span class="rule-text">Premium means better decisions.</span></div>
-            <div class="rule-item"><span class="rule-number">06</span><span class="rule-text">Empty space is allowed.</span></div>
-            <div class="rule-item"><span class="rule-number">07</span><span class="rule-text">Do not copy references.</span></div>
-            <div class="rule-item"><span class="rule-number">08</span><span class="rule-text">Do not create generic AI design.</span></div>
-            <div class="rule-item"><span class="rule-number">09</span><span class="rule-text">Do not fake technical functionality.</span></div>
-            <div class="rule-item"><span class="rule-number">10</span><span class="rule-text">Do not sacrifice UX for visual effects.</span></div>
-            <div class="rule-item"><span class="rule-number">11</span><span class="rule-text">Do not sacrifice performance for animation.</span></div>
-            <div class="rule-item"><span class="rule-number">12</span><span class="rule-text">Do not sacrifice accessibility for aesthetics.</span></div>
-            <div class="rule-item"><span class="rule-number">13</span><span class="rule-text">Preserve approved design decisions.</span></div>
-            <div class="rule-item"><span class="rule-number">14</span><span class="rule-text">Adapt the style but never lose the design DNA.</span></div>
-            <div class="rule-item"><span class="rule-number">15</span><span class="rule-text">When interaction improves the experience — make it interactive.</span></div>
+    <!-- ====== GOLDEN RULES ====== -->
+    <section id="golden-rules">
+        <div class="rules-header">
+            <div>
+                <div class="label">Core Principles</div>
+                <h2 class="section-title">11 Golden<br>Rules.</h2>
+            </div>
+            <p class="section-sub" style="align-self: end;">Non-negotiable principles that govern every design decision. Violating these rules produces generic, forgettable output.</p>
+        </div>
+        <div class="rules-grid">
+            <div class="rule-item"><div class="rule-num">01</div><div class="rule-text">Design with intention</div></div>
+            <div class="rule-item"><div class="rule-num">02</div><div class="rule-text">Hierarchy before decoration</div></div>
+            <div class="rule-item"><div class="rule-num">03</div><div class="rule-text">Typography before effects</div></div>
+            <div class="rule-item"><div class="rule-num">04</div><div class="rule-text">Functional interaction before decorative</div></div>
+            <div class="rule-item"><div class="rule-num">05</div><div class="rule-text">Premium = better decisions, not more effects</div></div>
+            <div class="rule-item"><div class="rule-num">06</div><div class="rule-text">Empty space is allowed and valuable</div></div>
+            <div class="rule-item"><div class="rule-num">07</div><div class="rule-text">Do not copy references — extract principles</div></div>
+            <div class="rule-item"><div class="rule-num">08</div><div class="rule-text">Do not fake technical functionality</div></div>
+            <div class="rule-item"><div class="rule-num">09</div><div class="rule-text">Do not sacrifice UX for visual effects</div></div>
+            <div class="rule-item"><div class="rule-num">10</div><div class="rule-text">Do not sacrifice accessibility for aesthetics</div></div>
+            <div class="rule-item" style="grid-column: span 2;"><div class="rule-num">11</div><div class="rule-text">Adapt style to context without losing design DNA</div></div>
         </div>
     </section>
 
+    <!-- ====== CINEMATIC PROMO ====== -->
+    <div id="promo">
+        <div class="promo-sticky">
+            <div class="promo-bg"></div>
+            <div class="promo-orb-1" id="promo-orb-1"></div>
+            <div class="promo-orb-2" id="promo-orb-2"></div>
+            <div class="promo-content">
+                <div class="promo-badge">✦ Cinematic Experience</div>
+                <h2 class="promo-title">
+                    <span class="line"><span class="line-inner" id="promo-l1">Every</span></span>
+                    <span class="line"><span class="line-inner" id="promo-l2">Output</span></span>
+                    <span class="line"><span class="line-inner title-gradient" id="promo-l3">Intentional.</span></span>
+                </h2>
+                <p class="hero-sub" id="promo-sub" style="opacity:0; transform: translateY(30px); margin: 0 auto;">Not AI-looking. Not generic. Not a template. Crafted with the discipline of a senior creative director.</p>
+            </div>
+        </div>
+    </div>
 
-    <!-- ━━━━ PIPELINE ━━━━ -->
-    <section class="section-wide" id="pipeline">
-        <div class="section-label">§97 — Master Execution Pipeline</div>
-        <h2 class="section-title">24 steps.<br>Every design task.</h2>
-        <p class="section-subtitle">
-            A systematic process from understanding to finalization — ensuring every output passes through strategy, art direction, experience design, implementation, and critique.
-        </p>
-
+    <!-- ====== PIPELINE ====== -->
+    <section id="pipeline">
+        <div class="pipeline-header">
+            <div class="label">Execution System</div>
+            <h2 class="section-title">24 Steps.<br>Every design task.</h2>
+            <p class="section-sub" style="margin-top: 16px;">A systematic process from understanding to finalization — ensuring every output passes through strategy, art direction, experience design, implementation, and critique.</p>
+        </div>
         <div class="pipeline-grid">
             <div class="pipeline-step"><div class="pipeline-step-num">01</div><div class="pipeline-step-name">Understand Request</div></div>
             <div class="pipeline-step"><div class="pipeline-step-num">02</div><div class="pipeline-step-name">Identify Audience</div></div>
@@ -1711,498 +1018,372 @@ cursor: pointer; transition: all 0.4s ease; text-transform: uppercase; letter-sp
         </div>
     </section>
 
-
-    <!-- ━━━━ SCOPE ━━━━ -->
-    <section class="section reveal" id="scope">
-        <div class="section-label">Scope — What It Can Design</div>
-        <h2 class="section-title">Everything visual.<br>Everything interactive.</h2>
-
-        <div class="scope-tags">
-            <span class="scope-tag">Websites</span>
-            <span class="scope-tag">Web Apps</span>
-            <span class="scope-tag">Mobile Apps</span>
-            <span class="scope-tag">SaaS Products</span>
-            <span class="scope-tag">AI Products</span>
-            <span class="scope-tag">AI Agents</span>
-            <span class="scope-tag">AI Dashboards</span>
-            <span class="scope-tag">Landing Pages</span>
-            <span class="scope-tag">E-Commerce</span>
-            <span class="scope-tag">Dashboards</span>
-            <span class="scope-tag">Admin Panels</span>
-            <span class="scope-tag">Design Systems</span>
-            <span class="scope-tag">Brand Identities</span>
-            <span class="scope-tag">Logos</span>
-            <span class="scope-tag">Posters</span>
-            <span class="scope-tag">Advertisements</span>
-            <span class="scope-tag">Social Media</span>
-            <span class="scope-tag">Presentations</span>
-            <span class="scope-tag">Product Showcases</span>
-            <span class="scope-tag">3D Experiences</span>
-            <span class="scope-tag">Data Visualizations</span>
-            <span class="scope-tag">Interactive Experiences</span>
-            <span class="scope-tag">Image Prompts</span>
-            <span class="scope-tag">Motion Concepts</span>
-            <span class="scope-tag">Campaign Systems</span>
+    <!-- ====== SCOPE — Marquee ====== -->
+    <section id="scope">
+        <div class="scope-header">
+            <div class="label">Scope — What It Can Design</div>
+            <h2 class="section-title">Everything visual.<br>Everything interactive.</h2>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <span class="marquee-item accent">Websites</span>
+                <span class="marquee-item">Web Apps</span>
+                <span class="marquee-item copper">Mobile Apps</span>
+                <span class="marquee-item">SaaS Products</span>
+                <span class="marquee-item purple">AI Products</span>
+                <span class="marquee-item">AI Agents</span>
+                <span class="marquee-item accent">Dashboards</span>
+                <span class="marquee-item">Landing Pages</span>
+                <span class="marquee-item copper">E-Commerce</span>
+                <span class="marquee-item">Admin Panels</span>
+                <span class="marquee-item purple">Design Systems</span>
+                <span class="marquee-item">Brand Identities</span>
+                <span class="marquee-item accent">Logos</span>
+                <span class="marquee-item">Posters</span>
+                <span class="marquee-item copper">Advertisements</span>
+                <span class="marquee-item">Presentations</span>
+                <!-- duplicate -->
+                <span class="marquee-item accent">Websites</span>
+                <span class="marquee-item">Web Apps</span>
+                <span class="marquee-item copper">Mobile Apps</span>
+                <span class="marquee-item">SaaS Products</span>
+                <span class="marquee-item purple">AI Products</span>
+                <span class="marquee-item">AI Agents</span>
+                <span class="marquee-item accent">Dashboards</span>
+                <span class="marquee-item">Landing Pages</span>
+                <span class="marquee-item copper">E-Commerce</span>
+                <span class="marquee-item">Admin Panels</span>
+                <span class="marquee-item purple">Design Systems</span>
+                <span class="marquee-item">Brand Identities</span>
+                <span class="marquee-item accent">Logos</span>
+                <span class="marquee-item">Posters</span>
+                <span class="marquee-item copper">Advertisements</span>
+                <span class="marquee-item">Presentations</span>
+            </div>
         </div>
     </section>
 
-
-    <!-- ━━━━ CTA ━━━━ -->
-    <section class="cta-section reveal">
-        <div class="section-label">Get Started</div>
-        <h2 class="section-title" style="margin: 0 auto var(--space-lg);">
-            Ship better design.
-        </h2>
-        <p class="section-subtitle" style="margin: 0 auto;">
-            Inject the OS into your AI workflow today.
-        </p>
-        <div>
-            <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="cta-button">
-                View on GitHub →
-            </a>
+    <!-- ====== FOOTER CTA ====== -->
+    <section id="footer-cta">
+        <div class="footer-glow"></div>
+        <div class="footer-cta-content">
+            <div class="label" style="justify-content: center; margin-bottom: 24px;">Get the Skill</div>
+            <h2 class="footer-title">Install it.<br>Use it. <span class="title-gradient">Ship faster.</span></h2>
+            <p class="footer-sub">The skill is open source and free to use with Antigravity AI.</p>
+            <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank" class="btn-primary" style="display: inline-flex;">View on GitHub →</a>
         </div>
     </section>
 
-
-    <!-- ━━━━ FOOTER ━━━━ -->
-    <footer class="footer">
-        <div class="footer-logo">Designer Mind OS</div>
-        <div class="footer-copy">
-            Copyright © 2024–2026 Wahyu Nur Iman. All rights reserved.
-        </div>
+    <footer>
+        <div class="footer-brand">DESIGNER MIND OS v5.0 — Cinematic Concrete Digital</div>
         <div class="footer-links">
+            <a href="#identity">Identity</a>
+            <a href="#golden-rules">Rules</a>
+            <a href="#pipeline">Pipeline</a>
             <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill" target="_blank">GitHub</a>
-            <a href="https://github.com/wahyunuriman999/Designer-Mind-Skill/blob/main/LICENSE" target="_blank">License</a>
         </div>
     </footer>
 
-    <!-- ━━━━ JAVASCRIPT ━━━━ -->
     <script>
-        // ── Slider ──
-        const sliderTrack = document.getElementById('slider-track');
-        const sliderDots = document.querySelectorAll('.slider-dot');
-        const sliderCurrent = document.getElementById('slider-current');
-        const prevBtn = document.getElementById('slider-prev');
-        const nextBtn = document.getElementById('slider-next');
-        let currentSlide = 0;
-        const totalSlides = 10;
-        let autoSlideInterval;
+    // =============================================
+    // DESIGNER MIND OS v5.0 — INTERACTION ENGINE
+    // Patterns implemented: 1,2,3,4,5,6,8,9,10,12,13
+    // =============================================
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        function goToSlide(index) {
-            currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
-            sliderTrack.style.transform = `translateX(-${currentSlide * 10}%)`;
-            sliderCurrent.textContent = String(currentSlide + 1).padStart(2, '0');
-            sliderDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
+    // ── Pattern 8: Custom Cursor ──
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        gsap.to(dot, { x: mouseX, y: mouseY, duration: 0.1 });
+    });
+
+    (function animateRing() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        gsap.set(ring, { x: ringX, y: ringY });
+        requestAnimationFrame(animateRing);
+    })();
+
+    document.querySelectorAll('a, button, .btn-primary, .btn-secondary, .identity-card, .rule-item, .pipeline-step, .dna-stat, .nav-cta').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // ── Pattern 13: Scroll Progress Bar ──
+    const progressBar = document.getElementById('scroll-progress');
+    ScrollTrigger.create({
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: (self) => {
+            progressBar.style.width = (self.progress * 100) + '%';
         }
+    });
 
-        prevBtn.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoSlide(); });
-        nextBtn.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoSlide(); });
-        sliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                goToSlide(parseInt(dot.dataset.index));
-                resetAutoSlide();
-            });
+    // ── Nav scroll effect ──
+    ScrollTrigger.create({
+        start: 'top -80',
+        onEnter: () => document.getElementById('nav').classList.add('scrolled'),
+        onLeaveBack: () => document.getElementById('nav').classList.remove('scrolled'),
+    });
+
+    // ── Nav smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) gsap.to(window, { scrollTo: { y: target, offsetY: 80 }, duration: 1.2, ease: 'power3.inOut' });
         });
+    });
 
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
-        }
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-        startAutoSlide();
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 9: KINETIC TYPOGRAPHY — HERO
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+        .to('.char', { y: 0, stagger: 0.04, duration: 1.0 })
+        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
+        .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
+        .to('#hero-scroll-indicator', { opacity: 1, duration: 0.6 }, '-=0.3');
 
-        // Touch/swipe support
-        let touchStartX = 0;
-        const sliderSection = document.querySelector('.slider-section');
-        sliderSection.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-        sliderSection.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) {
-                diff > 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
-                resetAutoSlide();
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 1+2: STICKY HERO + DYNAMIC ENV
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1.5
+        }
+    })
+    .to('#hero-orb', { scale: 3, opacity: 0.15, xPercent: 60, yPercent: -30 }, 0)
+    .to('.hero-content', { scale: 0.9, opacity: 0, y: -60 }, 0)
+    .to('#hero-scroll-indicator', { opacity: 0, y: -20 }, 0);
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 14: CANVAS PARTICLE FIELD
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    (function initParticles() {
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H, particles = [];
+
+        function resize() {
+            W = canvas.width = canvas.offsetWidth;
+            H = canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        for (let i = 0; i < 80; i++) {
+            particles.push({
+                x: Math.random() * W, y: Math.random() * H,
+                r: Math.random() * 1.5 + 0.5,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                alpha: Math.random() * 0.5 + 0.1
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 212, 170, ${p.alpha})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // IDENTITY — Section Reveal
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    gsap.from('#identity .identity-left > *', {
+        opacity: 0, y: 50, stagger: 0.15, duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '#identity', start: 'top 75%' }
+    });
+    gsap.from('.identity-card', {
+        opacity: 0, y: 60, stagger: 0.1, duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.identity-cards', start: 'top 80%' }
+    });
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 3: PHILOSOPHY — PINNED QUOTES
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const philTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#philosophy-wrapper',
+            pin: '.philosophy-sticky',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1.2
+        }
+    });
+    philTl
+        .to('#phil-q1', { opacity: 1, x: 0, duration: 1 })
+        .to('#phil-q2', { opacity: 1, x: 0, duration: 1 }, '+=0.5')
+        .to('#phil-q3', { opacity: 1, x: 0, duration: 1 }, '+=0.5')
+        .to('#phil-title', { opacity: 0.2, scale: 0.95, duration: 2 }, 1);
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 10: COUNT-UP NUMBERS
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    document.querySelectorAll('.dna-number[data-target]').forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.to({ val: 0 }, {
+                    val: target,
+                    duration: 2,
+                    ease: 'power2.out',
+                    onUpdate: function() {
+                        el.textContent = Math.round(this.targets()[0].val);
+                    }
+                });
             }
         });
+    });
 
-        // Keyboard
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft') { goToSlide(currentSlide - 1); resetAutoSlide(); }
-            if (e.key === 'ArrowRight') { goToSlide(currentSlide + 1); resetAutoSlide(); }
-        });
+    gsap.from('.dna-stat', {
+        opacity: 0, y: 50, scale: 0.9, stagger: 0.1, duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.dna-grid', start: 'top 80%' }
+    });
 
-        
-
-        
-        // ■■■■ MAXIMUM GSAP SCROLLYTELLING ■■■■
-        if(typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            // 1. Reveal Animations (Replacing IntersectionObserver)
-            gsap.utils.toArray('.reveal').forEach(section => {
-                // If it's the visual-dna or philosophy, handle differently
-                if(section.id === 'visual-dna' || section.id === 'philosophy' || section.id === 'pipeline') return;
-                
-                gsap.fromTo(section, 
-                    { opacity: 0, y: 50 }, 
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        duration: 1.2, 
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse"
-                        }
-                    }
-                );
-            });
-
-            // 2. Philosophy - Pinned Title
-            ScrollTrigger.matchMedia({
-                "(min-width: 768px)": function() {
-                    let philTl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#philosophy",
-                            start: "top top",
-                            end: "+=100%",
-                            pin: true,
-                            scrub: 1
-                        }
-                    });
-                    philTl.fromTo("#philosophy .philosophy-block", 
-                        { opacity: 0, y: 100 },
-                        { opacity: 1, y: 0, duration: 1 }
-                    ).to("#philosophy .section-title", { opacity: 0.2, duration: 1 }, "<");
-                }
-            });
-
-            // 3. Visual DNA - Horizontal Scroll
-            const visualDna = document.getElementById('visual-dna');
-            if(visualDna) {
-                // Animate DNA Grid
-                gsap.fromTo("#visual-dna .dna-grid .dna-cell", 
-                    { opacity: 0, scale: 0.8 },
-                    { 
-                        opacity: 1, 
-                        scale: 1, 
-                        stagger: 0.1,
-                        duration: 1,
-                        scrollTrigger: {
-                            trigger: "#visual-dna",
-                            start: "top 70%",
-                        }
-                    }
-                );
-
-                // Horizontal scroll for Palette Grid
-                const paletteGrid = document.querySelector('.palette-grid');
-                if(paletteGrid) {
-                    gsap.to(paletteGrid, {
-                        x: () => -(paletteGrid.scrollWidth - window.innerWidth + 100),
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: "#visual-dna",
-                            start: "top top",
-                            end: () => "+=" + (paletteGrid.scrollWidth),
-                            pin: true,
-                            scrub: 1
-                        }
-                    });
-                }
-            }
-
-            // 4. Pipeline - Staggered Parallax
-            const pipeline = document.getElementById('pipeline');
-            if(pipeline) {
-                gsap.fromTo(".pipeline-step", 
-                    { opacity: 0, y: 100, rotationX: -10 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        rotationX: 0,
-                        stagger: 0.2,
-                        duration: 1.5,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: "#pipeline",
-                            start: "top 60%",
-                            end: "bottom center",
-                            scrub: 1
-                        }
-                    }
-                );
-            }
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 5: HORIZONTAL SCROLL PALETTE
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const paletteTrack = document.getElementById('palette-track');
+    const paletteScrollAmount = paletteTrack.scrollWidth / 2;
+    gsap.to(paletteTrack, {
+        x: -paletteScrollAmount,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#visual-dna',
+            start: 'top 30%',
+            end: 'bottom top',
+            scrub: 1.5
         }
-        // ■■■■ END MAXIMUM GSAP ■■■■
+    });
 
-        // ── Nav scroll effect ──
-        const nav = document.getElementById('main-nav');
-        window.addEventListener('scroll', () => {
-            nav.style.background = window.scrollY > 100
-                ? 'rgba(10, 10, 10, 0.95)'
-                : 'rgba(10, 10, 10, 0.85)';
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // GOLDEN RULES — Staggered Reveal
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    gsap.from('.rules-header > *', {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.9,
+        scrollTrigger: { trigger: '#golden-rules', start: 'top 75%' }
+    });
+    gsap.from('.rule-item', {
+        opacity: 0, y: 40, scale: 0.95, stagger: 0.06, duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.rules-grid', start: 'top 80%' }
+    });
+
+    // Rule item radial glow effect
+    document.querySelectorAll('.rule-item').forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            item.style.setProperty('--mx', x + '%');
+            item.style.setProperty('--my', y + '%');
         });
+    });
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PROMO — Kinetic Title Reveal
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const promoTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#promo',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1.2,
+            pin: '.promo-sticky'
+        }
+    });
+    promoTl
+        .to('#promo-l1', { y: 0, duration: 1 })
+        .to('#promo-l2', { y: 0, duration: 1 }, '-=0.6')
+        .to('#promo-l3', { y: 0, duration: 1 }, '-=0.6')
+        .to('#promo-sub', { opacity: 1, y: 0, duration: 1 }, '-=0.3')
+        .to('#promo-orb-1', { x: -100, y: 100, scale: 1.3, duration: 3 }, 0)
+        .to('#promo-orb-2', { x: 100, y: -80, scale: 1.5, duration: 3 }, 0);
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // PATTERN 6: PIPELINE SCROLL CONSTRUCTION
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    gsap.from('.pipeline-header > *', {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.9,
+        scrollTrigger: { trigger: '#pipeline', start: 'top 75%' }
+    });
+    gsap.to('.pipeline-step', {
+        opacity: 1, y: 0, stagger: 0.05, duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: '.pipeline-grid',
+            start: 'top 80%',
+            end: 'bottom 60%',
+            scrub: 0.8
+        }
+    });
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // SCOPE + FOOTER — Reveal
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    gsap.from('#scope .scope-header > *', {
+        opacity: 0, y: 40, stagger: 0.15, duration: 0.9,
+        scrollTrigger: { trigger: '#scope', start: 'top 75%' }
+    });
+    gsap.from('#footer-cta .footer-cta-content > *', {
+        opacity: 0, y: 50, stagger: 0.1, duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '#footer-cta', start: 'top 80%' }
+    });
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // DYNAMIC BACKGROUND COLOR (Pattern 2)
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const bgTransitions = [
+        { trigger: '#philosophy-wrapper', color: '#0d0a1a', onLeave: '#0a0a0a' },
+        { trigger: '#promo', color: '#0a0a0a', onLeave: '#0a0a0a' },
+        { trigger: '#pipeline', color: '#0a100d', onLeave: '#0a0a0a' },
+    ];
+    bgTransitions.forEach(({ trigger, color, onLeave }) => {
+        ScrollTrigger.create({
+            trigger,
+            start: 'top 60%',
+            end: 'bottom 40%',
+            onEnter: () => gsap.to('body', { backgroundColor: color, duration: 1.0 }),
+            onLeave: () => gsap.to('body', { backgroundColor: onLeave, duration: 1.0 }),
+            onEnterBack: () => gsap.to('body', { backgroundColor: color, duration: 1.0 }),
+            onLeaveBack: () => gsap.to('body', { backgroundColor: '#0a0a0a', duration: 1.0 }),
+        });
+    });
+
+    // ── Orb parallax mouse ──
+    window.addEventListener('mousemove', (e) => {
+        const xP = (e.clientX / window.innerWidth - 0.5) * 30;
+        const yP = (e.clientY / window.innerHeight - 0.5) * 30;
+        gsap.to('#hero-orb', { x: xP, y: yP, duration: 1.5, ease: 'power2.out' });
+    });
     </script>
-
-
-<!-- ━━━━ PROMO VIDEO SECTION ━━━━ -->
-<div class="divider" style="margin: 0 auto; margin-bottom: 20px;"></div>
-<div class="section-title" style="text-align: center; margin: 0 auto;">The Framework in Action</div>
-<p class="section-subtitle" style="text-align: center; margin: 0 auto 40px auto;">Watch the OS enforce visual hierarchy across different platforms.</p>
-
-<section id="promo-video-section">
-
-    <div class="noise"></div>
-    <div class="vignette"></div>
-
-    
-
-    <div id="video-container">
-        <!-- Intro -->
-        
-
-        <!-- Title -->
-        <div class="scene" id="scene-title">
-            <h1 class="title-huge">Designer Mind OS</h1>
-            <div class="title-sub">MASTER EDITION V4.0</div>
-        </div>
-
-        <!-- Showcase 1: Fintech -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/01-fintech.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Fintech & Dashboards</h2>
-                <p>High-density data. Premium trust signals.</p>
-            </div>
-        </div>
-
-        <!-- Showcase 2: E-commerce -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/06-ecommerce.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Premium E-Commerce</h2>
-                <p>Product is hero. Sophisticated visual hierarchy.</p>
-            </div>
-        </div>
-
-        <!-- Showcase 3: Mobile Apps -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/03-mobile-app.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Intuitive Mobile UX</h2>
-                <p>Thumb-zone optimization. Meaningful interactions.</p>
-            </div>
-        </div>
-
-        <!-- Showcase 4: Brand Identity -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/04-brand-identity.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Cohesive Brand Systems</h2>
-                <p>Not just logos. Entire visual languages.</p>
-            </div>
-        </div>
-
-        <!-- Showcase 5: AI Interfaces -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/09-ai-agent.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Next-Gen AI Interfaces</h2>
-                <p>Visualizing artificial intelligence clearly.</p>
-            </div>
-        </div>
-
-        <!-- Showcase 6: Data Viz -->
-        <div class="scene showcase">
-            <div class="img-wrapper"><img src="images/10-data-viz.jpg" class="bg-img"></div>
-            <div class="scene-label">
-                <h2>Cinematic Data Visualization</h2>
-                <p>Data that demands to be explored.</p>
-            </div>
-        </div>
-
-        <!-- Elegant Conclusion Sequence -->
-        <div class="scene" id="scene-montage-1">
-            <img src="images/05-product-showcase.jpg" class="bg-img" style="filter:brightness(0.4)">
-            <h1 class="title-huge" style="position:absolute; z-index:10;">ANY PLATFORM.</h1>
-        </div>
-        <div class="scene" id="scene-montage-2">
-            <img src="images/07-poster.jpg" class="bg-img" style="filter:brightness(0.4)">
-            <h1 class="title-huge" style="position:absolute; z-index:10;">ANY MEDIUM.</h1>
-        </div>
-        <div class="scene" id="scene-montage-3">
-            <img src="images/08-social-campaign.jpg" class="bg-img" style="filter:brightness(0.4)">
-            <h1 class="title-huge text-highlight" style="position:absolute; z-index:10;">ZERO COMPROMISE.</h1>
-        </div>
-
-        <!-- Outro -->
-        <div class="scene" id="scene-outro">
-            <h1 class="title-huge" style="font-size: 4vw;">Upgrade Your AI Today.</h1>
-            <p style="font-size: 1.5vw; color: #888; margin-top: 1rem;">Not a template generator. A Design Decision Engine.</p>
-            <div class="mono-text">github.com/wahyunuriman999/Designer-Mind-Skill</div>
-        </div>
-    </div>
-
-    
-</section>
-
-
-<script>
-
-        const videoContainer = document.getElementById('video-container');
-        if(videoContainer) videoContainer.style.display = 'block';
-
-        let videoPlayed = false;
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting && !videoPlayed) {
-                    videoPlayed = true;
-                    playCinematicSequence();
-                }
-            });
-        }, { threshold: 0.3 });
-        
-        const sectionToObserve = document.getElementById('promo-video-section');
-        if(sectionToObserve) videoObserver.observe(sectionToObserve);
-        
-        function playCinematicSequence() {
-            const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
-
-            // 2. MAIN TITLE
-            tl.set('#scene-title', { opacity: 1 })
-              .fromTo('#scene-title .title-huge', 
-                { scale: 0.8, opacity: 0, filter: "blur(20px)" }, 
-                { scale: 1, opacity: 1, filter: "blur(0px)", duration: 2, ease: 'expo.out' })
-              .fromTo('#scene-title .title-sub', 
-                { y: -20, opacity: 0, letterSpacing: "0.5em" }, 
-                { y: 0, opacity: 1, letterSpacing: "0.2em", duration: 1.5, ease: 'power3.out' }, "-=1")
-              .to('#scene-title', { opacity: 0, scale: 1.1, filter: "blur(10px)", duration: 1.5, ease: 'power2.in' }, "+=2");
-
-            // 3. SHOWCASES (Fintech -> Ecomm -> Mobile -> Brand -> AI -> Data)
-            const showcases = document.querySelectorAll('.showcase');
-            
-            // Elegant Variations Array
-            const masks = [
-                { start: 'polygon(0 0, 0 0, 0 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Left to right
-                { start: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Right to left
-                { start: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Bottom to top
-                { start: 'polygon(50% 0, 50% 0, 50% 100%, 50% 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Center split out
-                { start: 'polygon(0 0, 100% 0, 100% 0, 0 0)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }, // Top to bottom
-                { start: 'polygon(0 0, 0 0, 0 100%, 0 100%)', end: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }  // Left to right
-            ];
-
-            const pans = [
-                { scaleStart: 1.0, scaleEnd: 1.05, xStart: 0, xEnd: -30 }, // Zoom In + Pan Left
-                { scaleStart: 1.1, scaleEnd: 1.0, xStart: 0, xEnd: 0 },     // Zoom Out
-                { scaleStart: 1.0, scaleEnd: 1.05, xStart: -30, xEnd: 0 },  // Pan Right
-                { scaleStart: 1.0, scaleEnd: 1.08, xStart: 0, xEnd: 0 },    // Pure Zoom In
-                { scaleStart: 1.1, scaleEnd: 1.0, xStart: -20, xEnd: 0 },   // Zoom Out + Pan Right
-                { scaleStart: 1.0, scaleEnd: 1.05, xStart: 0, xEnd: 30 }    // Pan Left
-            ];
-
-            showcases.forEach((scene, index) => {
-                const imgWrap = scene.querySelector('.img-wrapper');
-                const img = scene.querySelector('.bg-img');
-                const title = scene.querySelector('h2');
-                const p = scene.querySelector('p');
-                
-                const mask = masks[index % masks.length];
-                const pan = pans[index % pans.length];
-
-                tl.set(scene, { opacity: 1 })
-                  // Setup initial camera state
-                  .set(img, { scale: pan.scaleStart, x: pan.xStart })
-                  // Reveal Mask (Varied, slower and smoother ease)
-                  .fromTo(imgWrap, 
-                    { clipPath: mask.start }, 
-                    { clipPath: mask.end, duration: 2.2, ease: 'power2.inOut' })
-                  // Slow Pan/Zoom on image (Varied)
-                  .to(img, { scale: pan.scaleEnd, x: pan.xEnd, duration: 4.5, ease: 'sine.inOut' }, "-=2.2")
-                  // Text Reveal
-                  .fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }, "-=4.0")
-                  .fromTo(p, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }, "-=3.6")
-                  // Fade out scene (Longer, smoother crossfade)
-                  .to(scene, { opacity: 0, duration: 1.5, ease: 'sine.inOut' }, "-=1.0");
-            });
-
-            // 4. ELEGANT CONCLUSION SEQUENCE
-            // Slow crossfades instead of rapid cuts
-            tl.set('#scene-montage-1', { opacity: 1 })
-              .fromTo('#scene-montage-1 .bg-img', { scale: 1.1 }, { scale: 1.05, duration: 3, ease: 'none' })
-              .fromTo('#scene-montage-1 h1', { y: 20, opacity: 0, letterSpacing: "0em" }, { y: 0, opacity: 1, letterSpacing: "-0.05em", duration: 1.5, ease: 'power2.out' }, "-=2.5")
-              
-              // Crossfade to 2
-              .to('#scene-montage-1', { opacity: 0, duration: 1.5, ease: 'power2.inOut' })
-              .set('#scene-montage-2', { opacity: 1 }, "-=1.5")
-              .fromTo('#scene-montage-2 .bg-img', { scale: 1.05 }, { scale: 1, duration: 3, ease: 'none' }, "-=1.5")
-              .fromTo('#scene-montage-2 h1', { y: 20, opacity: 0, letterSpacing: "0em" }, { y: 0, opacity: 1, letterSpacing: "-0.05em", duration: 1.5, ease: 'power2.out' }, "-=1.5")
-
-              // Crossfade to 3
-              .to('#scene-montage-2', { opacity: 0, duration: 1.5, ease: 'power2.inOut' })
-              .set('#scene-montage-3', { opacity: 1 }, "-=1.5")
-              .fromTo('#scene-montage-3 .bg-img', { scale: 1 }, { scale: 1.05, duration: 3, ease: 'none' }, "-=1.5")
-              .fromTo('#scene-montage-3 h1', { y: 20, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.5, ease: 'power2.out' }, "-=1.5")
-              
-              .to('#scene-montage-3', { opacity: 0, duration: 1.5, ease: 'power2.inOut' }, "+=1");
-
-            // 5. OUTRO
-            tl.set('#scene-outro', { opacity: 1 })
-              .fromTo('#scene-outro h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' })
-              .fromTo('#scene-outro p', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' }, "-=1")
-              .fromTo('#scene-outro .mono-text', { opacity: 0, filter: "blur(5px)" }, { opacity: 1, filter: "blur(0px)", duration: 2, ease: 'power2.out' }, "+=0.5");
-        }
-    
-</script>
-<script>
-        
-        // --- SCROLLYTELLING GSAP LOGIC ---
-        if(typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            const scrollTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#scrollytelling-section",
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 1
-                }
-            });
-
-            // 1. Enter Feature 1
-            scrollTl.to(".core-visual", { scale: 1.2, rotationY: 45, rotationX: 20, duration: 2 })
-                    .to("#scroll-feat-1", { opacity: 1, y: 0, duration: 1 }, "<")
-                    .to("#scroll-feat-1", { opacity: 0, y: -30, duration: 1 }, "+=1")
-            
-            // 2. Feature 2
-                    .to(".core-visual", { scale: 0.9, rotationY: -45, rotationX: -10, duration: 2 }, "+=0.5")
-                    .to("#scroll-feat-2", { opacity: 1, y: 0, duration: 1 }, "<")
-                    .to("#scroll-feat-2", { opacity: 0, y: -30, duration: 1 }, "+=1")
-                    
-            // 3. Feature 3
-                    .to(".core-visual", { scale: 1.5, rotationY: 180, rotationX: 0, duration: 2, background: "radial-gradient(circle at 50% 50%, var(--color-copper), #050505)", boxShadow: "0 0 60px rgba(180, 83, 9, 0.3), inset 0 0 40px rgba(255,255,255,0.1)" }, "+=0.5")
-                    .to("#scroll-feat-3", { opacity: 1, y: 0, duration: 1 }, "<")
-                    .to("#scroll-feat-3", { opacity: 0, y: -30, duration: 1 }, "+=1")
-                    
-                    .to(".core-visual", { scale: 1, rotationY: 360, duration: 2 });
-        }
-
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                if (preloader) preloader.classList.add('preloader-hidden');
-            }, 800); // Cinematic delay
-        });
-
-</script>
-
-    <footer class="site-footer">
-        &copy; 2026 Designer Mind OS. Engineered for Elite Visual Architecture.
-    </footer>
-
 </body>
 </html>
