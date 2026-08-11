@@ -15,24 +15,18 @@
             --text-1: #ffffff;
             --text-2: #a3a3a3;
             --text-3: #525252;
-            --accent: #e07a3a; /* Copper */
+            --accent: #e07a3a;
             
             --font-display: 'Inter', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            cursor: none;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
         body {
-            background-color: var(--bg);
-            color: var(--text-1);
-            font-family: var(--font-display);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            line-height: 1.4;
+            background-color: var(--bg); color: var(--text-1);
+            font-family: var(--font-display); -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; line-height: 1.4;
         }
 
         /* Custom Cursor */
@@ -70,18 +64,15 @@
         .btn-primary { background: var(--text-1); color: var(--bg); }
         .btn-primary:hover { background: transparent; color: var(--text-1); border-color: var(--text-1); }
         
-        /* Sections */
-        section { position: relative; width: 100%; }
-        
         /* Noise Overlay */
         .noise {
             position: fixed; inset: 0; pointer-events: none; z-index: 9000; opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* Scroll Showcase */
+        /* Vertical Scroll Showcase */
         .showcase-container {
-            height: 400vh; /* 4 slides */
+            height: 900vh; /* 9 slides */
             position: relative;
         }
         .showcase-sticky {
@@ -103,36 +94,26 @@
             position: absolute; inset: 0; background: var(--bg); transform-origin: bottom;
         }
         
+        /* Interactive About & Rules */
+        .interactive-text-section {
+            padding: 20vh 5vw; display: flex; flex-direction: column; gap: 20vh;
+        }
+        .reveal-text {
+            font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; color: var(--text-3);
+            line-height: 1.2; max-width: 1200px;
+        }
+        .reveal-word { color: var(--text-1); }
         
-        /* Horizontal Archive */
-        .archive-container {
-            height: 300vh; /* space for horizontal scrolling */
-            position: relative;
+        .rules-list {
+            display: flex; flex-direction: column; gap: 40px; margin-top: 60px;
         }
-        .archive-sticky {
-            position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
-            display: flex; align-items: center;
+        .rule-item {
+            display: flex; align-items: flex-start; gap: 24px; opacity: 0; transform: translateY(40px);
         }
-        .archive-track {
-            display: flex; gap: 10vw; padding: 0 10vw; height: 60vh; align-items: center;
-            width: fit-content;
-        }
-        .archive-item {
-            position: relative; width: 40vw; height: 100%; flex-shrink: 0;
-            overflow: hidden;
-        }
-        .archive-item:nth-child(even) { height: 70%; transform: translateY(15%); }
-        .archive-item img {
-            width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7);
-            transition: filter 0.5s;
-        }
-        .archive-item:hover img { filter: brightness(1); }
-        .archive-label {
-            position: absolute; bottom: 24px; left: 24px; color: var(--text-1);
-            font-size: 1.5rem; font-weight: 700; z-index: 2;
-        }
+        .rule-number { color: var(--accent); font-family: var(--font-mono); font-size: 1.5rem; }
+        .rule-text { font-size: 2rem; font-weight: 600; color: var(--text-1); letter-spacing: -0.02em; }
 
-        /* Promo Video Section */
+        /* Promo Video */
         #promo-video {
             position: relative; width: 100%; height: 100vh; background: #000;
             overflow: hidden; display: flex; align-items: center; justify-content: center;
@@ -146,15 +127,6 @@
             filter: brightness(0.3); transform: scale(1.1);
         }
         .promo-text { position: relative; z-index: 2; text-align: center; }
-
-        /* Editorial Manifesto */
-        .manifesto {
-            padding: 20vh 5vw; display: flex; flex-direction: column; gap: 15vh;
-        }
-        .manifesto-line {
-            display: flex; flex-direction: column;
-        }
-        .manifesto-line p { margin-top: 24px; max-width: 600px; color: var(--text-2); font-size: 1.25rem; }
         
         .footer { padding: 20vh 5vw 10vh; text-align: center; }
     </style>
@@ -170,7 +142,7 @@
     </nav>
 
     <!-- HERO -->
-    <section id="hero" style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <section id="hero" style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position:relative;">
         <div style="position: absolute; inset: 0; z-index: 1;">
             <img src="images/01-fintech.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.25);">
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, #050505 0%, transparent 40%, #050505 100%);"></div>
@@ -189,7 +161,7 @@
         </div>
     </section>
 
-    <!-- CINEMATIC SCROLL SHOWCASE (REPLACES OUTPUT GALLERY) -->
+    <!-- CINEMATIC VERTICAL SCROLL SHOWCASE (10 Outputs) -->
     <section class="showcase-container" id="showcase">
         <div class="showcase-sticky">
             
@@ -199,7 +171,7 @@
                     <div class="text-sub slide-sub">Data & Analytics</div>
                     <h2 class="text-huge slide-title">ABSOLUTE<br>PRECISION.</h2>
                 </div>
-                <div class="showcase-mask mask-1"></div>
+                <div class="showcase-mask"></div>
             </div>
 
             <div class="showcase-slide slide-2">
@@ -208,62 +180,107 @@
                     <div class="text-sub slide-sub">Mobile Interfaces</div>
                     <h2 class="text-huge slide-title">TACTILE<br>PERFECTION.</h2>
                 </div>
-                <div class="showcase-mask mask-2"></div>
+                <div class="showcase-mask"></div>
             </div>
 
             <div class="showcase-slide slide-3">
                 <img src="images/04-brand-identity.jpg">
                 <div class="showcase-content">
-                    <div class="text-sub slide-sub">Product Campaigns</div>
-                    <h2 class="text-huge slide-title">CINEMATIC<br>REVEALS.</h2>
+                    <div class="text-sub slide-sub">Brand Identity</div>
+                    <h2 class="text-huge slide-title">VISUAL<br>DNA.</h2>
                 </div>
-                <div class="showcase-mask mask-3"></div>
+                <div class="showcase-mask"></div>
             </div>
 
             <div class="showcase-slide slide-4">
                 <img src="images/05-product-showcase.jpg">
                 <div class="showcase-content">
-                    <div class="text-sub slide-sub">Editorial Spaces</div>
+                    <div class="text-sub slide-sub">Product Campaigns</div>
+                    <h2 class="text-huge slide-title">CINEMATIC<br>REVEALS.</h2>
+                </div>
+                <div class="showcase-mask"></div>
+            </div>
+
+            <div class="showcase-slide slide-5">
+                <img src="images/06-ecommerce.jpg">
+                <div class="showcase-content">
+                    <div class="text-sub slide-sub">E-Commerce</div>
+                    <h2 class="text-huge slide-title">SEAMLESS<br>FLOW.</h2>
+                </div>
+                <div class="showcase-mask"></div>
+            </div>
+
+            <div class="showcase-slide slide-6">
+                <img src="images/07-poster.jpg">
+                <div class="showcase-content">
+                    <div class="text-sub slide-sub">Editorial & Print</div>
                     <h2 class="text-huge slide-title">SPATIAL<br>HARMONY.</h2>
                 </div>
-                <div class="showcase-mask mask-4"></div>
+                <div class="showcase-mask"></div>
+            </div>
+
+            <div class="showcase-slide slide-7">
+                <img src="images/08-social-campaign.jpg">
+                <div class="showcase-content">
+                    <div class="text-sub slide-sub">Social Campaigns</div>
+                    <h2 class="text-huge slide-title">BOLD<br>ATTENTION.</h2>
+                </div>
+                <div class="showcase-mask"></div>
+            </div>
+
+            <div class="showcase-slide slide-8">
+                <img src="images/09-ai-agent.jpg">
+                <div class="showcase-content">
+                    <div class="text-sub slide-sub">AI Interfaces</div>
+                    <h2 class="text-huge slide-title">FUTURE<br>SYSTEMS.</h2>
+                </div>
+                <div class="showcase-mask"></div>
+            </div>
+
+            <div class="showcase-slide slide-9">
+                <img src="images/10-data-viz.jpg">
+                <div class="showcase-content">
+                    <div class="text-sub slide-sub">Data Visualization</div>
+                    <h2 class="text-huge slide-title">CLARITY<br>FIRST.</h2>
+                </div>
+                <div class="showcase-mask"></div>
             </div>
 
         </div>
     </section>
 
-    <!-- EDITORIAL MANIFESTO (REPLACES GENERIC CARDS) -->
-    <section class="manifesto">
-        <div class="manifesto-line">
-            <h2 class="text-huge">HIERARCHY<br>BEFORE<br>DECORATION.</h2>
-            <p>We strip away the unnecessary. No meaningless gradients. No generic grids. Every pixel must earn its existence through pure visual reasoning.</p>
+    <!-- INTERACTIVE IDENTITY & RULES -->
+    <section class="interactive-text-section">
+        
+        <!-- Identity Scroll Reveal -->
+        <div style="min-height: 100vh; display:flex; align-items:center;">
+            <p class="reveal-text" id="identity-text">
+                We are not a generator. We are a <span class="reveal-word">design decision engine</span>. 
+                Designer Mind determines <span class="reveal-word">WHAT</span> should exist, 
+                <span class="reveal-word">WHY</span> it should exist, and <span class="reveal-word">HOW</span> 
+                it should look, behave, and feel — then implements it with production-ready precision.
+            </p>
         </div>
-        <div class="manifesto-line" style="align-items: flex-end; text-align: right;">
-            <h2 class="text-huge">MOTION<br>WITH<br>PURPOSE.</h2>
-            <p style="margin-left: auto; margin-right: 0;">We do not bounce or jiggle. Our motion language is rooted in cinematic camera movement, creating depth, tension, and release.</p>
-        </div>
-        <div class="manifesto-line">
-            <h2 class="text-huge">PRODUCT<br>IS HERO.</h2>
-            <p>The interface should disappear. The product should dominate. We design the stage, lighting, and atmosphere to elevate the core subject.</p>
-        </div>
-    </section>
 
-    
-    <!-- HORIZONTAL ARCHIVE (Images 06 - 10) -->
-    <section class="archive-container" id="archive">
-        <div class="archive-sticky">
-            <div style="position:absolute; top: 10vh; left: 5vw; z-index: 10;">
-                <div class="text-sub">The Extended Archive</div>
-                <h2 class="text-huge">MORE<br>OUTPUTS.</h2>
-            </div>
-            <div class="archive-track" id="archive-track">
-                <div class="archive-item"><img src="images/06-ecommerce.jpg"><div class="archive-label">E-Commerce</div></div>
-                <div class="archive-item"><img src="images/07-poster.jpg"><div class="archive-label">Poster Design</div></div>
-                <div class="archive-item"><img src="images/08-social-campaign.jpg"><div class="archive-label">Social Campaign</div></div>
-                <div class="archive-item"><img src="images/09-ai-agent.jpg"><div class="archive-label">AI Agents</div></div>
-                <div class="archive-item"><img src="images/10-data-viz.jpg"><div class="archive-label">Data Visualization</div></div>
+        <!-- Rules Stagger Reveal -->
+        <div style="min-height: 100vh;">
+            <div class="text-sub" style="margin-bottom: 24px;">The 10 Golden Rules</div>
+            <h2 class="text-huge" style="margin-bottom: 80px;">ZERO<br>EXCEPTIONS.</h2>
+            
+            <div class="rules-list" id="rules-container">
+                <div class="rule-item"><span class="rule-number">01</span><span class="rule-text">Design with intention.</span></div>
+                <div class="rule-item"><span class="rule-number">02</span><span class="rule-text">Hierarchy before decoration.</span></div>
+                <div class="rule-item"><span class="rule-number">03</span><span class="rule-text">Typography before effects.</span></div>
+                <div class="rule-item"><span class="rule-number">04</span><span class="rule-text">Functional interaction before decorative interaction.</span></div>
+                <div class="rule-item"><span class="rule-number">05</span><span class="rule-text">Premium means better decisions.</span></div>
+                <div class="rule-item"><span class="rule-number">06</span><span class="rule-text">Empty space is allowed.</span></div>
+                <div class="rule-item"><span class="rule-number">07</span><span class="rule-text">Do not create generic AI design.</span></div>
+                <div class="rule-item"><span class="rule-number">08</span><span class="rule-text">Do not sacrifice UX for visual effects.</span></div>
+                <div class="rule-item"><span class="rule-number">09</span><span class="rule-text">Preserve approved design decisions.</span></div>
+                <div class="rule-item"><span class="rule-number">10</span><span class="rule-text">When interaction improves the experience - make it interactive.</span></div>
             </div>
         </div>
+
     </section>
 
     <!-- PROMO VIDEO (Autoplaying Cinematic Cuts) -->
@@ -289,94 +306,8 @@
     </section>
 
     <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
-        // Horizontal Archive Scroll
-        const track = document.getElementById('archive-track');
-        gsap.to(track, {
-            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#archive",
-                start: "top top",
-                end: "+=200%",
-                scrub: 1,
-                pin: true
-            }
-        });
-
-        // Promo Video Autoplay Sequence (Intersection Observer triggers it)
-        const promoTl = gsap.timeline({ paused: true, repeat: -1 });
-        promoTl
-            // Scene 1: Text only
-            .set('.p-scene-1', { opacity: 1 })
-            .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
-            .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
-            
-            // Scene 2: Image + Text cut
-            .set('.p-scene-2', { opacity: 1 })
-            .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
-            .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
-            .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
-            
-            // Scene 3: Final cut
-            .set('.p-scene-3', { opacity: 1 })
-            .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
-            .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
-            .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
-
-        // Start promo video only when it scrolls into view
-        ScrollTrigger.create({
-            trigger: "#promo-video",
-            start: "top 50%",
-            onEnter: () => promoTl.play(),
-            onLeaveBack: () => promoTl.pause()
-        });
-
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js">
-        // Horizontal Archive Scroll
-        const track = document.getElementById('archive-track');
-        gsap.to(track, {
-            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#archive",
-                start: "top top",
-                end: "+=200%",
-                scrub: 1,
-                pin: true
-            }
-        });
-
-        // Promo Video Autoplay Sequence (Intersection Observer triggers it)
-        const promoTl = gsap.timeline({ paused: true, repeat: -1 });
-        promoTl
-            // Scene 1: Text only
-            .set('.p-scene-1', { opacity: 1 })
-            .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
-            .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
-            
-            // Scene 2: Image + Text cut
-            .set('.p-scene-2', { opacity: 1 })
-            .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
-            .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
-            .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
-            
-            // Scene 3: Final cut
-            .set('.p-scene-3', { opacity: 1 })
-            .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
-            .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
-            .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
-
-        // Start promo video only when it scrolls into view
-        ScrollTrigger.create({
-            trigger: "#promo-video",
-            start: "top 50%",
-            onEnter: () => promoTl.play(),
-            onLeaveBack: () => promoTl.pause()
-        });
-
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -396,10 +327,10 @@
             .from('.hero-p', { y: 20, opacity: 0, duration: 1.2, ease: 'power3.out' }, '-=0.9')
             .from('.hero-scroll', { opacity: 0, duration: 1 }, '-=0.5');
 
-        // Cinematic Scroll Showcase (The core product gallery)
+        // Cinematic Vertical Scroll Showcase (9 Slides)
         const slides = gsap.utils.toArray('.showcase-slide');
         
-        // Initial state
+        slides.forEach((slide, i) => { slide.style.zIndex = i; });
         gsap.set(slides[0], { opacity: 1 });
         gsap.set(slides[0].querySelector('img'), { scale: 1 });
         
@@ -407,20 +338,14 @@
             scrollTrigger: {
                 trigger: "#showcase",
                 start: "top top",
-                end: "+=400%", // 4 slides
+                end: "+=900%", // 9 slides length
                 scrub: 1,
                 pin: true
             }
         });
 
-        // Ensure proper stacking contexts by setting z-index on slides
         slides.forEach((slide, i) => {
-            slide.style.zIndex = i;
-        });
-
-        // Loop through slides 1 to 3 to transition FROM previous TO next
-        slides.forEach((slide, i) => {
-            if(i === 0) return; // Skip first slide as it's already visible
+            if(i === 0) return;
             
             const prevSlide = slides[i-1];
             const prevContent = prevSlide.querySelector('.showcase-content');
@@ -431,79 +356,61 @@
             const sub = slide.querySelector('.slide-sub');
 
             showcaseTl
-                // Fade out previous slide content
                 .to(prevContent, { y: -50, opacity: 0, duration: 0.8, ease: 'power2.in' })
-                
-                // Reveal the next slide by pulling up its mask
                 .set(slide, { opacity: 1 }, '-=0.4')
                 .to(mask, { scaleY: 0, duration: 1, ease: 'power2.inOut' }, '-=0.4')
-                
-                // Animate elements inside the new slide
                 .fromTo(img, { scale: 1.2 }, { scale: 1, duration: 1.5, ease: 'power1.out' }, '-=1')
                 .fromTo(title, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, '-=0.8')
                 .fromTo(sub, { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.5')
-                
-                // Push the previous slide image slightly for parallax depth
                 .to(prevSlide.querySelector('img'), { scale: 1.1, opacity: 0.5, duration: 1 }, '-=1.5');
         });
 
-        // Editorial Manifesto scroll reveals
-        gsap.utils.toArray('.manifesto-line').forEach(line => {
-            gsap.from(line.querySelectorAll('h2, p'), {
-                y: 60,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: line,
-                    start: 'top 80%'
-                }
-            });
-        });
-    
-        // Horizontal Archive Scroll
-        const track = document.getElementById('archive-track');
-        gsap.to(track, {
-            x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
-            ease: "none",
+        // Identity Scroll Text Reveal (Scrubbing effect on text color)
+        gsap.to('.reveal-word', {
+            color: 'var(--accent)',
+            stagger: 0.2,
             scrollTrigger: {
-                trigger: "#archive",
-                start: "top top",
-                end: "+=200%",
-                scrub: 1,
-                pin: true
+                trigger: '#identity-text',
+                start: 'top 70%',
+                end: 'bottom 40%',
+                scrub: 1
+            }
+        });
+
+        // Rules Stagger Scroll Reveal
+        gsap.to('.rule-item', {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#rules-container',
+                start: 'top 80%',
             }
         });
 
         // Promo Video Autoplay Sequence (Intersection Observer triggers it)
         const promoTl = gsap.timeline({ paused: true, repeat: -1 });
         promoTl
-            // Scene 1: Text only
             .set('.p-scene-1', { opacity: 1 })
             .fromTo('.p-scene-1 .promo-text', { scale: 0.8, filter: 'blur(10px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power3.out' })
             .to('.p-scene-1', { opacity: 0, duration: 0.2 }, "+=1")
-            
-            // Scene 2: Image + Text cut
             .set('.p-scene-2', { opacity: 1 })
             .fromTo('.p-scene-2 img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power1.out' })
             .fromTo('.p-scene-2 .promo-text', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' }, "-=2")
             .to('.p-scene-2', { opacity: 0, duration: 0.2 }, "+=1.5")
-            
-            // Scene 3: Final cut
             .set('.p-scene-3', { opacity: 1 })
             .fromTo('.p-scene-3 img', { scale: 1.1 }, { scale: 1, duration: 2 })
             .fromTo('.p-scene-3 .promo-text', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=2")
             .to('.p-scene-3', { opacity: 0, duration: 0.5 }, "+=1.5");
 
-        // Start promo video only when it scrolls into view
         ScrollTrigger.create({
             trigger: "#promo-video",
             start: "top 50%",
             onEnter: () => promoTl.play(),
             onLeaveBack: () => promoTl.pause()
         });
-
     </script>
 </body>
 </html>
