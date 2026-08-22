@@ -145,3 +145,9 @@ Before presenting the design, ask yourself:
 
 **The final result must feel: CINEMATIC, PREMIUM, EDITORIAL, IMMERSIVE, and INTENTIONAL.**
 
+
+### 🛑 CRITICAL TECHNICAL CONSTRAINT: AVOID BLACK SCREEN BUGS
+When building CSS 3D parallax or scroll-driven assembly using perspective and 	ransform-style: preserve-3d:
+- **NEVER** apply perspective directly to the ody or html tag, especially when combined with overflow-x: hidden. This is a known browser rendering bug that will crash the viewport matrix and result in a blank black screen.
+- **ALWAYS** apply perspective only to the specific wrapping container (e.g., .showcase-wrapper or .hero-container).
+- Ensure elements pushed deep into the Z-axis (e.g., 	ranslateZ(-1000px)) have a container with a high enough perspective value to prevent them from clipping behind the ody background.
